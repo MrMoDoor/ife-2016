@@ -1,0 +1,159 @@
+body {
+	background-color: #EEEEEE;
+}
+
+header {
+	width: 960px;
+	height: 80px;
+	
+	margin: 0px auto 20px auto;
+	/*background-color: white;
+	box-shadow: 6px 6px 3px #E9E9E9;*/
+}
+
+header>h1 {
+	line-height: 50px;
+	margin-left: 30px;
+	display: inline-block;
+	color: #999999;
+	cursor: pointer;
+}
+
+header>h1:hover {
+	color: #258FB8;
+	cursor: pointer;
+}
+
+header>p {
+	display: inline-block;
+	font-weight: 700;
+}
+
+header>p a {
+	text-decoration: none;
+	color: #999999;
+}
+
+header>p a:hover {
+	color: #258FB8;
+	cursor: pointer;
+	font-weight: 900;
+}
+
+h2 {
+	line-height: 30px;
+	margin-left: 30px;
+	padding-top: 25px;
+	line-height: 0;
+	cursor: pointer;
+}
+
+.main {
+	width: 960px;
+	background-color: #EEEEEE;
+	margin: 0px auto;
+}
+
+.description {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 20px;
+	box-shadow: 6px 6px 3px #E9E9E9;
+}
+
+.description li {
+	margin-top: 0;
+	line-height: 1.5;
+}
+
+.description ul {
+	padding-bottom: 20px;
+}
+
+.members {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 20px;
+	box-shadow: 6px 6px 3px #E9E9E9;
+}
+
+.members ul {
+	/*inline-block副作用*/
+	font-size: 0;
+	overflow: hidden;
+	zoom: -1;
+}
+
+.members li {
+	display: inline-block;
+	font-size: 0;
+}
+
+.members li>div {
+	font-size: 16px;
+	background-color: white;
+	box-shadow: 4px 4px 2px #E9E9E9;
+	width: 200px;
+	height: 250px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	float: left;
+	border: 2px solid #E9E9E9;
+}
+
+#harry-img {
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#harry-img>img {
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+}
+
+#harryfyodor {
+	text-align: center;
+}
+
+#harryfyodor p {
+	line-height: 1.5;
+}
+
+.tasks {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 20px;
+	box-shadow: 6px 6px 3px #E9E9E9;
+}
+
+.tasks ul {
+	line-height: 1.5;
+	padding-bottom: 20px;
+}
+
+.active {
+	color: red;
+}
+
+.share {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 20px;
+	box-shadow: 6px 6px 3px #E9E9E9;
+}
+
+.share ul {
+	line-height: 1.5;
+	padding-bottom: 20px;
+}
+
+footer {
+	width: 960px;
+	margin: 30px auto 0px auto;
+	color: #999999;
+}
