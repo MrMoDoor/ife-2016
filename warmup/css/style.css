@@ -1,5 +1,6 @@
 body {
 	background-color: #EEEEEE;
+    font-family: Helvetica, Tahoma, Arial, PingFang SC, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 
 header {
@@ -122,6 +123,29 @@ h2 {
 
 #harryfyodor p {
 	line-height: 1.5;
+}
+
+#benww-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#benww-img>img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+#benww {
+    text-align: center;
+}
+
+#benww p {
+    line-height: 1.5;
 }
 
 .tasks {
