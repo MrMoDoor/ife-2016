@@ -102,7 +102,7 @@ h2 {
 	border: 2px solid #E9E9E9;
 }
 
-#harry-img {
+#harry-img, #benww-img, #zhou-img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
@@ -111,41 +111,18 @@ h2 {
 	margin-right: auto;
 }
 
-#harry-img>img {
+#harry-img>img, #benww-img>img, #zhou-img>img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
 }
 
-#harryfyodor {
+#harryfyodor, #benww, #zhou {
 	text-align: center;
 }
 
-#harryfyodor p {
+#harryfyodor p, #benww p, #zhou p {
 	line-height: 1.5;
-}
-
-#benww-img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#benww-img>img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-}
-
-#benww {
-    text-align: center;
-}
-
-#benww p {
-    line-height: 1.5;
 }
 
 .tasks {
