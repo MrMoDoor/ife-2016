@@ -102,7 +102,7 @@ h2 {
 	border: 2px solid #E9E9E9;
 }
 
-#harry-img, #benww-img, #zhou-img {
+#harry-img, #benww-img, #zhou-img, #kz-img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
@@ -111,17 +111,17 @@ h2 {
 	margin-right: auto;
 }
 
-#harry-img>img, #benww-img>img, #zhou-img>img {
+#harry-img>img, #benww-img>img, #zhou-img>img, #kz-img>img {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
 }
 
-#harryfyodor, #benww, #zhou {
+#harryfyodor, #benww, #zhou, #kz {
 	text-align: center;
 }
 
-#harryfyodor p, #benww p, #zhou p {
+#harryfyodor p, #benww p, #zhou p, #kz p {
 	line-height: 1.5;
 }
 
