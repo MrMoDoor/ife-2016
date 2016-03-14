@@ -1,0 +1,132 @@
+*{font-family:黑体;}
+
+body{
+    background-color: #eeeeee
+}
+
+#logo{
+    position: absolute;
+    top:28px;
+    left: 60px;
+
+}
+
+#link{
+    position: absolute;
+    top: 45px;
+    left: 1150px;
+
+
+}
+
+#link a{
+    color:white;
+    text-decoration: none;
+}
+
+#header{
+    background-color: #B80000;
+    margin: 20px;
+    height: 108px;
+}
+
+#p1{
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 20px;
+}
+
+#p2{
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 20px;
+}
+
+.p3{
+    margin: 20px;
+    border: 1px black solid;
+    width: 200px;
+    text-align: center;
+}
+
+#sp3{
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 20px;
+}
+
+#p4{
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 20px;
+}
+
+#p5{
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 20px;
+}
+
+.grey{
+    color: grey;
+}
+
+.white{
+    color:white;
+}
+th{
+    background-color: black;
+}
+
+td,th{
+    padding: 5px;
+    width:33%;
+    text-align: center;
+}
+table{
+    margin:20px 20px 20px 20px;
+    width:100%;
+}
+
+.cellcolor{
+    background-color: gray;
+}
+
+#finh{
+    display: block;
+    font-weight: bold;
+}
+
+div.tableRow{
+    display: table-row;
+}
+
+div.tableRow p{
+    display: table-cell;
+    vertical-align: top;
+    padding: 5px;
+}
+
+div.tableRow p:first-child{
+    text-align: right;
+}
+form{
+    display: table;
+    width:230%;
+}
+
+span{
+    margin-top: 100px;
+    color: gray;
+    font-size: small;
+}
+
+#bt{
+    width:274%;
+    border-radius: 10px;
+    color: #ebedf6;
+    height: 2.5em;
+    font-size: 1.1em;
+    background: #3355d0;
+
+}
