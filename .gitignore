@@ -4,4 +4,4 @@ ehthumbs.db
 Desktop.ini
 
 # WebStorm
-*/.idea/*
+.idea/
