@@ -1,0 +1,90 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+
+.container {
+	width: 90%;
+	padding: 20px;
+	background-color: #eee;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+}
+
+/*清除浮动*/
+.container:after {
+    content:"";
+    display:block;
+    clear:both;
+}
+
+/*这里用了圣杯布局*/
+
+.team-container {
+	width: 100%;
+	background-color: white;
+	float: left;
+	background-color: #eee;
+}
+
+.team-description {
+	background-color: white;
+	margin-left: 220px;
+	margin-right: 140px;
+	padding: 20px;
+	position: relative;
+	border: 1px solid #999;
+}
+
+.team-description>h2 {
+	margin-bottom: 10px;
+}
+
+.team-description>p {
+	margin-bottom: 20px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+.team-name {
+	width: 200px;
+	margin-left: -100%;
+	padding: 20px;
+	background-color: white;
+	float: left;
+	border: 1px solid black;
+}
+
+.team-name p {
+	float: right;
+	display: inline-block;
+}
+
+.team-name>div {
+	width: 80px;
+	height: 80px;
+	background-color: #eee;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.team-member {
+	width: 120px;
+	margin-left: -120px;
+	padding: 20px;
+	background-color: white;
+	float: left;
+	border: 1px solid black;
+}
+
+.team-member>div {
+	margin-bottom: 20px;
+	width: 80px;
+	height: 80px;
+	background-color: #eee;
+	border: 1px solid black;
+}

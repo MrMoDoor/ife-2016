@@ -1,0 +1,75 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	/*inline-block会制造空格，用font-size可以去除。*/
+	font-size: 0;
+}
+
+html, body {
+	/*这里的作用是使得height:100%起作用*/
+	height: 100%;
+}
+
+.container {
+	width: 50%;
+	height: 100%;
+	position: relative;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.center-box {
+	width: 400px;
+	height: 200px;
+	/*居中布局*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #CCCCCC;
+	overflow: hidden;
+}
+
+.center-box>div {
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+	background-color: #FFCC00;
+	position: absolute;
+}
+
+.circle-1 {
+	top: -50px;
+	left: -50px;
+}
+
+.circle-2 {
+	bottom: -50px;
+	right: -50px;
+}
+
+/*右边*/
+.center-box-2 {
+	width: 400px;
+	padding: 50px;
+	/*居中布局*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #CCCCCC;
+	overflow: hidden;
+}
+
+.center-box-2>div {
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+	background-color: #FFCC00;
+	position: absolute;
+}
+
+.center-box-2>p {
+	font-size: 16px;
+}
