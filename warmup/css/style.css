@@ -3,6 +3,10 @@ body {
     font-family: Helvetica, Tahoma, Arial, PingFang SC, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 
+* {
+	font-family: Helvetica, Tahoma, Arial, PingFang SC, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
 header {
 	width: 960px;
 	height: 80px;
@@ -38,7 +42,6 @@ header>p a {
 header>p a:hover {
 	color: #258FB8;
 	cursor: pointer;
-	font-weight: 900;
 }
 
 h2 {
@@ -115,6 +118,23 @@ h2 {
 	height: 100px;
 	width: 100px;
 	border-radius: 50px;
+	
+	transition: all ease 1s;
+	/* Firefox 4 */
+	-moz-transition-duration: all ease 1s;
+	/* Safari 和 Chrome */
+	-webkit-transition-duration: all ease 1s;
+	/* Opera */
+	-o-transition-duration: all ease 1s;
+} 
+
+#harry-img>img:hover, #benww-img>img:hover, #zhou-img>img:hover, #kz-img>img:hover {
+	transform:rotate(360deg);
+	-ms-transform:rotate(360deg); 	
+	-moz-transform:rotate(360deg); 	
+	-webkit-transform:rotate(360deg); 
+	-o-transform:rotate(360deg); 
+	cursor: pointer;
 }
 
 #harryfyodor, #benww, #zhou, #kz {
@@ -137,8 +157,66 @@ h2 {
 	padding-bottom: 20px;
 }
 
+.finished {
+	text-decoration: line-through;
+}
+
 .active {
 	color: red;
+}
+
+.demo {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 20px;
+	box-shadow: 6px 6px 3px #E9E9E9;
+}
+
+.demo ul {
+	line-height: 1.5;
+	padding-bottom: 20px;
+}
+
+.process {
+	width: 90%;
+	min-height: 50px;
+	border: 2px solid #E9E9E9;
+	box-shadow: 6px 6px 3px #E9E9E9;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.process li {
+	list-style: none;
+}
+
+.process li a {
+	text-decoration: none;
+	color: #258FB8;
+}
+
+.process li a:hover {
+	color: red;
+}
+
+.process li span {
+	float: right;
+	margin-right: 20px;
+}
+
+.process li span:hover {
+	color: #258FB8;
+	cursor: pointer;
+}
+
+.process button {
+	width: 100px;
+	height: 40px;
+	background-color: #EEEEEE;
+	border: 1px solid #E9E9E9;
+	margin-top: 10px;
+	cursor: pointer;
+	margin-left: 10px;
 }
 
 .share {
