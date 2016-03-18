@@ -1,0 +1,65 @@
+.container {
+    overflow: hidden;
+    min-width: 640px;
+    background-color: #eee;
+    padding: 20px;
+    border: solid 1px #999;
+}
+
+.frame {
+    border: solid 1px #999;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 0 20px;
+}
+
+#left-frame {
+    float: left;
+    width: 200px;
+    margin-left: -100%;
+}
+
+#right-frame {
+    float: right;
+    width: 120px;
+    margin-left: -120px;
+    padding: 20px;
+}
+
+#middle-frame {
+    margin: 0 140px 0 220px;
+}
+
+#middle-frame-wrapper {
+    float: left;
+    width: 100%;
+}
+
+img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#right-frame img {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#right-frame img:last-child {
+    margin-bottom: 0;
+}
+
+h1 {
+    float: right;
+    font-size: 16px;
+    text-align: center;
+    width: auto;
+    margin: 20px 0;
+}
+
+body {
+    font-family: Helvetica, Tahoma, Arial, PingFang SC, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
