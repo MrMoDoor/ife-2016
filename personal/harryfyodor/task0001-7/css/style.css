@@ -177,7 +177,68 @@ header li img {
 	background-image: url(../img/watchMap.png);
 	background-repeat:no-repeat;
 	background-size: 100% 100%;
+	text-align: center;
 }
+
+.section-4 h3 {
+	color: white;
+	font-size: 21px;
+	font-weight: 400;
+	text-align: center;
+	padding-top: 45px;
+	line-height: 31.266px;
+}
+
+.section-4 p {
+	padding-top: 30px;
+	font-size: 12px;
+	color: white;
+	line-height: 31.266px;
+}
+
+.section-4 div {
+	width: 31px;
+	height: 3px;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8px;
+}
+
+.section-4 select, button{
+	width: 236px;
+	height: 36px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 28px;
+	color: #E1E0E2;
+	padding-left: 5px;
+}
+
+.section-4 button {
+	width: 236px;
+	height: 36px;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 36px;
+	color: white;
+	background-color: #BC4D47;
+	white-space: pre-wrap;
+}
+
+.section-4 option {
+	width: 236px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #E1E0E2;
+	color: black;
+}
+
+.section-4 option:hover {
+	background-color: #BC4D47;
+	color: white;
+} 
 
 .section-5 {
 	min-width: 1280px;
@@ -369,6 +430,15 @@ header li img {
 	font-weight: 400;
 }
 
+.sec-7-left div {
+	width: 31px;
+	height: 3px;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 260px;
+}
+
 .sec-7-left button {
 	color: white;
 	width: 170px;
@@ -377,7 +447,7 @@ header li img {
 	font-size: 21px;
 	line-height: 24px;
 	position: absolute;
-	left: 128px;
+	left: 118px;
 	top: 275px;
 	border: 2px solid white;
 	border-radius: 2px;
@@ -404,6 +474,15 @@ header li img {
 	font-weight: 400;
 }
 
+.sec-7-mid div {
+	width: 31px;
+	height: 3px;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 260px;
+}
+
 .sec-7-mid button {
 	color: #E84E4C;
 	width: 170px;
@@ -412,7 +491,7 @@ header li img {
 	font-size: 21px;
 	line-height: 24px;
 	position: absolute;
-	left: 130px;
+	left: 120px;
 	top: 275px;
 	border: 2px solid #E84E4C;
 	border-radius: 2px;
