@@ -1,0 +1,29 @@
+.box {
+    width: 400px;
+    height: 200px;
+    background-color: #ccc;
+    overflow: hidden;
+    /* 居中 */
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #fc0;
+    border-radius: 50%;
+}
+
+#left-top {
+    left: -50px;
+    top: -50px;
+}
+
+#right-bottom {
+    right: -50px;
+    bottom: -50px;
+}
