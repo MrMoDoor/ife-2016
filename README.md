@@ -36,13 +36,13 @@
 **任务地址：**[百度前端技术学院](http://ife.baidu.com/task/all)   
 
 - [ ] 任务一，零基础HTML编码 
-	- [x] harryfyodor
+	- [ ] harryfyodor
 	- [x] benwwchen
 	- [x] Zhou-SYSU
 	- [ ] ZknightERO
 
 - [ ] 任务二，零基础HTML及CSS编码 
-	- [x] harryfyodor
+	- [ ] harryfyodor
 	- [x] benwwchen
 	- [x] Zhou-SYSU
 	- [ ] ZknightERO
