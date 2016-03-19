@@ -58,7 +58,27 @@ h2 {
 	margin: 0px auto;
 }
 
-.description {
+.warning p,b {
+	padding-left: 15px;
+}
+
+.warning {
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.warning p>a {
+	text-decoration: none;
+	color: #258FB8;
+}
+
+.warning b>a {
+	color: red;
+	text-decoration: none;
+	font-size: 21px;
+}
+
+.description, .warning{
 	width: 100%;
 	background-color: white;
 	margin-bottom: 20px;

@@ -36,9 +36,12 @@ header ul {
 }
 
 header li {
+	text-align: center;
+	width: 60px;
 	display: inline-block;
 	font-size: 14px;
-	margin-right: 46px;
+	margin-right: 36px;
+	margin-top: 2px;
 	line-height: 51px;
 }
 
@@ -53,7 +56,7 @@ header li img {
 	height: 17px;
 	position: absolute;
 	top: 17px;
-	left: -20px;
+	left: -8px;
 }
 
 .header-login {
@@ -243,7 +246,7 @@ header li img {
 .section-5 {
 	min-width: 1280px;
 	height: 610px;
-	background-color: #F5F5F5;
+	background-color: #EEEEEE;
 }
 
 .section-5>div {
@@ -384,6 +387,7 @@ header li img {
 	height: 35px;
 	border: 2px solid #E46868;
 	background-color: white;
+	color: #E46868;
 	cursor: pointer;
 	margin-top: 40px;
 }
@@ -592,12 +596,13 @@ header li img {
 	top: 10px;
 }
 
-.sec-9-right>* {
+.sec-9-right p,label,button,input, textarea {
+	display: inline-block;
+	/*
 	background-color: #EDEDEF;
 	border-radius: 2px;
 	height: 41px;
 	line-height: 41px;
-	width: 311px;
 	border: none;
 	padding-left: 14px;
 	margin-top: 14px;
@@ -605,14 +610,51 @@ header li img {
 	font-size: 12px;
 	font-family: SimSun;
 	color: #888889;
+	*/
+}
+.sec-9-right p {
+	width: 311px;
+	background-color: #EDEDEF;
+	height: 41px;
+	line-height: 41px;
+	margin-top: 14px;
+	margin-left: 12px;
+	padding-left: 20px;
+}
+.sec-9-right input{
+	width: 210px;
+	background-color: white;
+	background-color: #EDEDEF;
+	border: none;
+	height: 39px;
+}
+
+.sec-9-right input:focus {
+	border: none;
+}
+
+.sec-9-right label {
+	width: 70px;
+	height: 20px;
+	color: #888889;
+	font-size: 12px;
+	background-color: #EDEDEF;
 }
 
 .sec-9-right textarea {
 	width: 639px;
 	height: 121px;
+	background-color: #EDEDEF;
+	border: none;
+	margin-top: 14px;
+	margin-left: 10px;
+	padding: 5px 5px;
 }
 
 .sec-9-right button {
+	margin-top: 10px;
+	background-color: #EDEDEF;
+	border: none;
 	width: 639px;
 	height: 41px;
 	text-align: center;
@@ -659,6 +701,8 @@ header li img {
 	padding-left: 12px;
 	font-size: 14px;
 	color: #ABAAAA;
+	position: relative;
+	left: 10px;
 }
 
 .section-10 button {
@@ -702,13 +746,12 @@ footer span {
 	margin-left: 89px;
 }
 
+footer a {
+	text-decoration: none;
+	color: white;
+}
+
 footer span:last-child {
 	float: right;
 	margin-right: 89px;
-}
-
-footer span:nth-child(2) {
-	width: 520px;
-	margin-left: 220px;
-	font-size: 14px;
 }
