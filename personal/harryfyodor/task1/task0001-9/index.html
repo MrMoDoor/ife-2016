@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务九：使用HTML/CSS实现一个复杂页面</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<header>
+		<img src="img/logo.png" alt="logo">
+		<p class="header-search">
+			<img src="img/search.png" alt="search">
+			<input type="search">
+		</p>
+		<p class="header-login">
+			<img src="img/login.png" alt="login">
+			<a href="/">登陆</a>
+		</p>
+	</header>
+	<div class="container">
+		<aside>
+			<div class="aside-personal">
+				<div>
+					<div><div></div></div>
+					<h3>ABC123</h3>
+				</div>
+				<div>
+					<p>110<br>收藏</p>
+					<p>313<br>粉丝</p>
+				</div>
+			</div>
+			<div class="aside-files">
+				<ul>
+					<li class="list-1 list-active">
+						<span class="list-1-icon"><img src="img/document-white.png" alt="star"></span>
+						<a class="list-active-1" href="javascript::">个人档案</a>
+						<ul>
+							<li class="list-2">
+								<span class="list-2-5-icon"><img src="img/right.png" alt="right"></span>
+								<span class="list-2-icon"><img src="img/document.png" alt="document"></span>
+								<a href="javascript::">文件一</a>
+							</li>
+							<li class="list-2">
+								<span class="list-2-5-icon-active"><img src="img/down.png" alt="right"></span>
+								<span class="list-2-icon"><img src="img/document-white.png" alt="document-white"></span>
+								<a href="javascript::" class="list-active-1">文件二</a>
+								<ul>
+									<li class="list-3">
+										<span class="list-3-icon"><img src="img/file-white.png" alt="file-white"></span>
+										<a href="javascript::" class="list-active-1">文件1</a>
+									</li>
+									<li class="list-3">
+										<span class="list-3-icon"><img src="img/file.png" alt="file"></span>
+										<a href="javascript::">文件1</a>
+									</li>
+								</ul>
+							</li>
+							<li class="list-2">
+								<span class="list-2-5-icon"><img src="img/right.png" alt="right"></span>
+								<span class="list-2-icon"><img src="img/document.png" alt="document"></span>
+								<a href="javascript::">文件三</a>
+							</li>
+						</ul>
+					</li>
+					<li class="list-1">
+						<span class="list-1-icon"><img src="img/star.png" alt="star"></span>
+						<a href="javascript::">个人收藏</a>
+					</li>
+					<li class="list-1">
+						<span class="list-1-icon"><img src="img/share.png" alt="share"></span>
+						<a href="javascript::">我的分享</a>
+					</li>
+					<li class="list-1">
+						<span class="list-1-icon"><img src="img/star.png" alt="star"></span>
+						<a href="javascript::">图库</a>
+					</li>
+					<li class="list-1">
+						<span class="list-1-icon"><img src="img/star.png" alt="star"></span>
+						<a href="javascript::">成长记录</a>
+					</li>
+					<li class="list-1">
+						<span class="list-1-icon"><img src="img/info.png" alt="info"></span>
+						<a href="javascript::">账户信息</a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<div class="main">
+			<div class="main-header">
+				<p>C站 / 个人报表 / 文件一 / 文档一</p>
+			</div>
+			<div class="main-search">
+				<div class="main-search-left">
+					<p>
+						<label>查询项</label>
+						<select placehoder="第一项">
+							<option value="A"></option>
+							<option value="A"></option>
+							<option value="A"></option>
+						</select>
+					</p>
+				</div>
+				<div class="main-search-mid">
+					<p class="main-search-buy">
+						<label>买方</label>
+						<select placehoder="第一项">
+							<option value="A" selected>小A</option>
+							<option value="A">小C</option>
+							<option value="A">小D</option>
+						</select>
+					</p>
+					<p class="main-search-sale">
+						<label>卖方</label>
+						<select placehoder="第一项">
+							<option value="A" selected>小B</option>
+							<option value="A">小C</option>
+							<option value="A">小D</option>
+						</select>
+					</p>
+					<img src="img/change.png" alt="change">
+				</div>
+				<div class="main-search-right">
+					<p class="main-search-date">
+						<label>日期</label>
+						<input type="email" placehoder="第一项">
+					</p>
+					<p class="main-search-population">
+						<label>人数</label>
+						<select>
+							<option value="A" selected>10人</option>
+							<option value="A">11人</option>
+							<option value="A">12人</option>
+						</select>
+					</p>
+					<p class="main-search-time-cost">
+						<label>总耗时</label>
+						<select>
+							<option value="A" selected>8天</option>
+							<option value="A">9天</option>
+							<option value="A">10天</option>
+						</select>
+					</p>
+					<p class="main-search-success">
+						<label>成交量</label>
+						<select>
+							<option value="A" selected>10项</option>
+							<option value="A">11项</option>
+							<option value="A">12项</option>
+						</select>
+					</p>
+				</div>
+				<button>搜索</button>
+			</div>
+			<div class="main-history">
+				<div class="main-his-left">
+					<img src="img/left2.png" alt="left">
+				</div>
+				<div class="main-his-ele">
+					<p>10:00am</p>
+					<b>￥</b>
+					<span>1200</span>
+				</div>
+				<div class="main-his-ele">
+					<p>11:00am</p>
+					<b>￥</b>
+					<span>1300</span>
+				</div>
+				<div class="main-his-ele">
+					<p>12:00am</p>
+					<b>￥</b>
+					<span>1200</span>
+				</div>
+				<div class="main-his-ele">
+					<p>01:00pm</p>
+					<b>￥</b>
+					<span>1400</span>
+				</div>
+				<div class="main-his-ele">
+					<p>02:00pm</p>
+					<b>￥</b>
+					<span>1500</span>
+				</div>
+				<div class="main-his-ele">
+					<p>03:00px</p>
+					<b>￥</b>
+					<span>1800</span>
+				</div>
+				<div class="main-his-right">
+					<img src="img/right2.png" alt="right">
+				</div>
+				<div class="main-his-search">
+					<img src="img/history.png" alt="history">
+					<span>历史查询</span>
+				</div>
+			</div>
+			<div class="main-total">
+				<p>
+					2016年4月份统计
+				</p>
+				<div class="main-total-green">
+					<p>133311</p>
+					<span>成交量</span>
+					<div></div>
+				</div>
+				<div class="main-total-blue">
+					<p>133311</p>
+					<span>成交量</span>
+					<div></div>
+				</div>
+				<div class="main-total-red">
+					<p>133311</p>
+					<span>成交量</span>
+					<div></div>
+				</div>
+				<div class="main-total-yellow">
+					<p>133311</p>
+					<span>成交量</span>
+					<div></div>
+				</div>
+			</div>
+			<div class="main-project">
+				<div class="main-project-head">第一个项目</div>
+				<div class="main-project-nav">
+					<div>项目一</div>
+					<div>项目二</div>
+					<div>项目三</div>
+					<div>项目四</div>
+					<div>项目五</div>
+				</div>
+				<div class="main-project-tb">
+					<table>
+						<tr>
+							<td>购买材料一</td>
+							<td>购买材料一</td>
+							<td>购买材料一</td>
+							<td>购买材料一</td>
+						</tr>
+						<tr>
+							<td>购买材料二</td>
+							<td>购买材料二</td>
+							<td>购买材料二</td>
+							<td>购买材料二</td>
+						</tr>
+						<tr>
+							<td>购买材料四</td>
+							<td>购买材料四</td>
+							<td>购买材料四</td>
+							<td>购买材料四</td>
+						</tr>
+						<tr>
+							<td>购买材料六</td>
+							<td>购买材料六</td>
+							<td>购买材料六</td>
+							<td>购买材料六</td>
+						</tr>
+						<tr>
+							<td>购买材料十三</td>
+							<td>购买材料十三</td>
+							<td>购买材料十三</td>
+							<td>购买材料十三</td>
+						</tr>
+						<tr>
+							<td>购买材料二十</td>
+							<td>购买材料二十</td>
+							<td>购买材料二十</td>
+							<td>购买材料二十</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="main-project-search">
+				<div class="main-project-search-head">第一个项目</div>
+			</div>
+			<div class="main-date"></div>
+			<div class="main-table"></div>
+		</div>
+	</div>
+</body>
+</html>
