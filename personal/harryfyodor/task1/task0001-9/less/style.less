@@ -635,13 +635,166 @@ aside {
 
 .main-project-search {
 	.main-model(351px, 357px, 340px, 599px);
+	background-color: @milk-white;
 	.main-project-search-head {
 		.main-header-model();
 	}
+	* {
+		background-color: @milk-white;
+	}
+	h4,p {
+		font-size: 12px;
+		font-family: 'Microsoft YaHei';
+		line-height: 16px;
+		//color: @light-gray;
+	}
+	h4 {
+		color: @color-font;
+		font-weight: 400;
+		font-size: 12px;
+	}
+	p {
+		color: black;
+		display: block;
+		width: 140px;
+	}
+	.main-project-search-title {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 13px;
+		width: 280px;
+		padding-bottom: 5px;
+		line-height: 2;
+		border-bottom: 1px solid @light-gray;
+	}
+	.main-project-search-price {
+		height: 40px;
+		width: 120px;
+		margin-left: 34px;
+		border-bottom: 1px solid @light-gray;
+		padding-top: 5px;
+		h4 {
+			display: block;
+			width: 140px;
+		}
+	}
+	.main-project-search-res {
+		position: absolute;
+		left: 120px;
+		top: 91px;
+		border: 1px solid @light-gray;
+		border-right: none;
+		padding-left: 10px;
+		padding-top: 3px;
+		width: 193px;
+		height: 40px;
+	}
+	.main-project-search-des {
+		margin-left: 34px;
+		margin-top: 5px;
+	}
+	.main-project-search-form {
+		top: 2000px;
+		width: 281px;
+		height: 30px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 115px;
+		border-top: 1px solid @light-gray;
+		* {
+			display: inline-block;
+		}
+		label {
+			background-color: @milk-white;
+			margin-top: 9px;
+		}
+		
+		p {
+			background-color: @milk-white;
+			color: @color-font;
+			width: 73px;
+		}
+		input {
+			position: relative;
+			top: 2px;
+		}
+		button {
+			background-color: #3788BF;
+			color: white;
+			width: 51px;
+			height: 26px;
+			margin-left: 120px;
+			text-align: center;
+			line-height: 26px;
+			border: none;
+			cursor: pointer;
+		}
+	}
+	
 }
 
 .main-date {
 	.main-model(351px, 357px, 710px, 59px);
+	.main-date-head {
+		.main-header-model();
+	}
+	background-color: @milk-white;
+	* {
+		background-color: @milk-white;
+	}
+	.main-date-form {
+		width: 300px;
+		margin-top: 7px;
+		margin-left: auto;
+		margin-right: auto;
+		* {
+			background-color: @milk-white;
+			margin-top: 6px;
+			height: 23px;
+			text-align: center;
+		}
+		button {
+			border: 1px solid @color-font;
+			padding: 3px 4px;
+		}
+	}
+	table {
+		border-collapse:inherit;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+		* {
+			//padding: 3px 5px;
+			text-align: center;
+			span {
+				font-size: 11.36px;
+			}
+		}
+		td {
+			width: 40px;
+			height: 40px;
+			//border: 1px solid black;
+		}
+		td:hover {
+			font-family: 'Microsoft YaHei';
+			box-sizing: border-box;
+			font-family: SimHei;
+			border: 1px solid yellow;
+			cursor: pointer;
+		}
+		tr:first-child {
+			background-color: red;
+			border-top: 1px solid @color-font;
+			border-bottom: 1px solid @color-font;
+		}
+		.yellow-border {
+			border: 1px solid yellow;
+		}
+		.red-font {
+			color: red;
+			font-weight: 600;
+		}
+	}
 }
 
 .main-table {

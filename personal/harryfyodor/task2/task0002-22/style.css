@@ -1,0 +1,39 @@
+.aqi-chart-wrap {
+  font-size: 0;
+  margin-left: 200px;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+}
+.aqi-chart-wrap>div {
+  display: inline-block;
+}
+.day {
+  width: 5px;
+}
+.week {
+  width: 20px;
+}
+.month {
+  width: 30px;
+}
+
+.black {
+  background-color: black;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
