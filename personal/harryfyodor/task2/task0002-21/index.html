@@ -1,29 +1,26 @@
-<!DOCTYPE>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>IFE JavaScript Task 01</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务二十一：基础JavaScript练习（四）</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
 <body>
-
-  <div>
-    <label>城市名称：<input id="aqi-city-input" type="text"></label><br>
-    <label>空气质量指数：<input id="aqi-value-input" type="text"></label><br>
-    <button id="add-btn">确认添加</button>
-  </div>
-  <table id="aqi-table">
-  <!-- 
-    <tr>
-      <td>城市</td><td>空气质量</td><td>操作</td>
-    </tr>
-    <tr>
-      <td>北京</td><td>90</td><td><button>删除</button></td>
-    </tr>
-    <tr>
-      <td>北京</td><td>90</td><td><button>删除</button></td>
-    </tr>
-   -->
-  </table>
-  <script src="task.js"></script>
+	<form id="tags-first">
+		<label>
+			Tags:<input type="text">
+		</label>
+	</form>
+	<div id="tags-display-first">
+		<span class="tags-1">HTML</span>
+	</div>
+	<form id="tags-second">
+		<textarea cols="30" rows="10"></textarea>
+		<button>确认兴趣爱好</button>
+	</form>
+	<div id="tags-display-second">
+		<span class="tags-2">node</span>
+	</div>
+	<script src="task.js"></script>
 </body>
 </html>

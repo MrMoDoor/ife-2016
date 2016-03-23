@@ -1,101 +1,152 @@
-// 写于1016/3/21 by harryfyodor
+// 写于2016/3/23 by harryfyodor
 
-/**
- * aqiData，存储用户输入的空气指数数据
- * 示例格式：
- * aqiData = {
- *    "北京": 90,
- *    "上海": 40
- * };
- */
-var aqiData = {};
-
-/**
- * 从用户输入中获取数据，向aqiData中增加一条数据
- * 然后渲染aqi-list列表，增加新增的数据
- */
-function addAqiData() {
-  var city = document.getElementById("aqi-city-input").value;
-  var value = document.getElementById("aqi-value-input").value;
-  city = city.trim();
-  value = value.trim();
-  // 只允许有中文或者英文
-  if (city.search(/[^a-zA-Z\u4e00-\u9fa5]+/g) == -1) {
-    if (value.search(/[^0-9]+/g) == -1){
-      aqiData[city] = value;
-    } else {
-      alert("空气质量指数必须为整数");
-    }
-  } else {
-    alert("输入的城市名必须为中英文字符");
-  }
+// 存放两组tag的数组
+var data = {
+	"tags-1" : [],
+	"tags-2" : []
 }
 
-/**
- * 渲染aqi-table表格
- */
-function renderAqiList() {
-  var len = 0;
-  var table = document.getElementById("aqi-table");
-  var tableContent = "";
-  
-  table.innerHTML = "";
-  for (city in aqiData) {
-    tableContent += "<tr><td>" + city + "</td><td>" + aqiData[city] + "</td><td><button>删除</button></td></tr>";
-  }
-  table.innerHTML = tableContent;
+// 第一个事件的开始函数，回车，逗号，空格事件
+function keyEvent() {
+	var input = document.getElementById("tags-first").getElementsByTagName("input")[0];
+	var content = "";
+	input.onkeydown = function() {
+		var e = arguments[0] || window.event;
+		content = input.value;
+		content = content.trim();
+		if (content != "") {
+			// 点击了回车键
+			if (e.keyCode == 13) {
+				content = input.value;
+				keyEventHandle(content);
+				content = "";
+				input.value = "";
+				return false;
+			} else if (e.keyCode == 32) {
+				// 点击了空格键
+				event.returnvalue=false;
+				content = input.value;
+				keyEventHandle(content);
+				content = "";
+				input.value = "";
+				return false;
+			} else if (e.keyCode === 188){
+				// 点击了逗号键
+				content = content.replace(/[,\uff0c]+/g,"");
+				keyEventHandle(content);
+				content = "";
+				input.value = "";
+				return false; // 避免残留，不刷新
+			}
+		}
+	}
+	// 防止无意义的刷新
+	var label = document.getElementById("tags-first");
+	label.onkeydown = function() {
+		var e = arguments[0] || window.event;
+		if (e.keyCode == 13) {
+			return false;
+		}
+	}
 }
 
-/**
- * 点击add-btn时的处理逻辑
- * 获取用户输入，更新数据，并进行页面呈现的更新
- */
-function addBtnHandle() {
-  addAqiData();
-  renderAqiList();
+// 按键处理函数
+function keyEventHandle(content) {
+	var displayArea = document.getElementById("tags-display-first");
+	handleData(content, 1);
+	renderTags(displayArea, data["tags-1"], 1);
 }
 
-/**
- * 点击各个删除按钮的时候的处理逻辑
- * 获取哪个城市数据被删，删除数据，更新表格显示
- */
-function delBtnHandle(target) {
-  // do sth.
-  var deleteThis = target.parentNode.parentNode;
-  var table = deleteThis.parentNode;console.log(table);
-  var cityname = "";
-  for (var i = 0, len = deleteThis.childNodes.length; i < len; i++){
-    if(deleteThis.childNodes[i].nodeType == 1) {
-      cityname = deleteThis.childNodes[i].innerHTML;
-      console.log(cityname);
-      break;
-    }
-  }
-  delete aqiData[cityname];
-  renderAqiList();
+// 数据处理函数
+// 要加入data的内容，编号
+function handleData(content, index) {
+	var identify = true;
+	content = content.trim();
+	if (content != "" && content.search(",") == -1 && content.search("，") == -1){
+		// 不重复
+		for (var j = 0; j < data["tags-" +　index].length; j++) {
+			if (content == data["tags-" +　index][j]) {
+				identify = false;
+				break;
+			}
+		}
+		if (identify) {
+			data["tags-" +　index].push(content);	
+		}
+		if (data["tags-" +　index].length > 10) {
+			data["tags-" +　index].shift();
+		}
+	}
 }
 
-function init() {
-  
-  var btn = document.getElementsByTagName("button")[0];
-  var deleteBtns = document.getElementById("aqi-table").getElementsByTagName("button");
-  var table = document.getElementById("aqi-table");
-  // 在这下面给add-btn绑定一个点击事件，点击时触发addBtnHandle函数
-  console.log(btn);
-  btn.onclick = function() {
-    addBtnHandle();  	  
-  }
-  
-  // 想办法给aqi-table中的所有删除按钮绑定事件，触发delBtnHandle函数
-  // 运用事件代理的方法
-  table.onclick = function() {
-    var e = arguments[0] || window.event;
-    target = e.srcElement ? e.srcElement : e.target;
-    if (target.tagName.toUpperCase() == "BUTTON") {
-      delBtnHandle(target);
-    }
-    return false;
-  }
+// 渲染tags
+// 输入变量为输出的元素，输出的数据，输出的是第一组还是第二组tags
+function renderTags(displayArea, data, index) {
+	displayArea.innerHTML = "";
+	for (var i = 0; i < data.length; i++) {
+		displayArea.innerHTML = displayArea.innerHTML + '<span class="tags-' + index + '">' + data[i] + '</span>';
+	}
+	deleteTags(displayArea, data, index);
 }
 
-init();
+// 添加事件给每一个tags
+// 输入变量为输出的元素，以及输出的数据
+function deleteTags(displayArea, data, index) {
+	//var tags1Parent = document.getElementById("tags-display-first");
+	// 移动鼠标到目标处tags1
+	displayArea.onmouseover = function() {
+		var e = arguments[0] || window.event;
+		target = e.srcElement ? e.srcElement : e.target;
+		if (target.tagName.toLowerCase() == "span" ) {
+			target.innerHTML = "点击删除 " + target.innerHTML;
+		}
+	}
+	// 把鼠标移出目标tags
+	displayArea.onmouseout = function() {
+		var e = arguments[0] || window.event;
+		target = e.srcElement ? e.srcElement : e.target;
+		if (target.tagName.toLowerCase() == "span") {
+			target.innerHTML.replace("点击删除 ", "");
+			renderTags(displayArea, data, index);
+		} 
+	}
+	
+	// 删除tags
+	displayArea.onclick = function() {
+		var e = arguments[0] || window.event;
+		target = e.srcElement ? e.srcElement : e.target;
+		var ele = target.innerHTML.replace("点击删除 ", "");
+		if (target.tagName.toLowerCase() == "span") {
+			data.splice(data.indexOf(ele), 1);
+			renderTags(displayArea, data, index);
+		}
+	}
+}
+
+function btnEvent() {
+	var btn = document.getElementById("tags-second").getElementsByTagName("button")[0];
+	btn.onclick = function() {
+		btnEventHandle();
+		return false;
+	}
+}
+
+function btnEventHandle() {
+	var textarea = document.getElementsByTagName("textarea")[0];
+	var displayArea = document.getElementById("tags-display-second");
+	var text = textarea.value;
+	
+	text = text.replace(/[,\.\s\n\t\u3000\uff0c\u3001\u0020\u3002]+/g, " ");
+	text.trim();
+	var textArray = text.split(" ");
+	console.log(textArray);
+	
+	for (var i = 0; i < textArray.length; i++) {
+		handleData(textArray[i], 2)
+		renderTags(displayArea, data["tags-2"], 2);
+	}
+	
+}
+
+keyEvent();
+btnEvent();

@@ -763,6 +763,10 @@ aside {
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 10px;
+		.main-date-week {
+			border: 1px solid @color-font;
+			border-top: 1px solid black;
+		}
 		* {
 			//padding: 3px 5px;
 			text-align: center;
@@ -799,4 +803,120 @@ aside {
 
 .main-table {
 	.main-model(531px, 357px, 710px, 419px);
+	.main-table-head {
+		.main-header-model();
+	}
+	background-color: @milk-white;
+	table {
+		width: 450px;
+		height: 197px;
+		text-align:center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		border-collapse: collapse;
+		* {
+			font-family: 'Microsoft YaHei';
+			font-size:12px;
+			line-height: 1.8;
+			background-color: @milk-white;
+			//border: 1px solid @color-font;
+		}
+		td {
+			border: 1px solid @color-font;
+		}
+		td>div {
+			border-radius: 2px;
+			border: none;
+			width: 165px;
+			background-color: @light-gray;
+			position: absolute;
+			height: 4px;
+			right: 15px;
+			top: 8px;
+		}
+		.main-table-id-10,
+		.main-table-id-9,
+		.main-table-id-8,
+		.main-table-id-7,
+		.main-table-id-6,
+		.main-table-id-5,
+		.main-table-id-4,
+		.main-table-id-3,
+		.main-table-id-2,
+		.main-table-id-1 {
+			position: relative;
+			text-align: left;
+			
+			p{
+				border: none;
+				margin-left: 15px;
+			}
+			div>div {
+				border-radius: 4px;
+				height: 100%;
+				background-color: @light-gray;
+			}
+		}
+		.main-table-id-1 {
+			div>div {
+				background-color: #EA6D51;
+				width: 90%
+			}
+		}
+		.main-table-id-2 {
+			div>div {
+				background-color: #ED7F4F;
+				width: 85%;
+			}
+		}
+		.main-table-id-3 {
+			div>div {
+				background-color: #F0AA66;
+				width: 80%
+			}
+		}
+		.main-table-id-4 {
+			div>div {
+				background-color: #7DC8EE;
+				width: 75%;
+			}
+		}
+		.main-table-id-5 {
+			div>div {
+				background-color: #80CAEE;
+				width: 70%;
+			}
+		}
+		.main-table-id-6 {
+			div>div {
+				background-color: #7DC8ED;
+				width: 65%;
+			}
+		}
+		.main-table-id-7 {
+			div>div {
+				background-color: #7DC8EE;
+				width: 60%;
+			}
+		}
+		.main-table-id-8 {
+			div>div {
+				background-color: #7DC8EE;
+				width: 55%;
+			}
+		}
+		.main-table-id-9 {
+			div>div {
+				background-color: #7DC8EE;
+				width: 50%;
+			}
+		}
+		.main-table-id-10 {
+			div>div {
+				background-color: #82C9EC;
+				width: 45%;
+			}
+		}
+	}
 }

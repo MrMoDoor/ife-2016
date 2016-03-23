@@ -778,6 +778,10 @@ aside .aside-files a {
   margin-right: auto;
   margin-top: 10px;
 }
+.main-date table .main-date-week {
+  border: 1px solid #b6b6bb;
+  border-top: 1px solid black;
+}
 .main-date table * {
   text-align: center;
 }
@@ -814,4 +818,124 @@ aside .aside-files a {
   top: 710px;
   margin-left: 419px;
   border: 1px solid #D2CFD2;
+  background-color: #fdfdfd;
+}
+.main-table .main-table-head {
+  border-radius: 5px 0px 0px 0px;
+  width: 100%;
+  border-bottom: 1px solid #D2CFD2;
+  height: 41px;
+  padding: 12px 16px;
+  font-family: 'Microsoft YaHei';
+  font-size: 12px;
+  background-color: #ebebea;
+  color: #C8C8C7;
+}
+.main-table table {
+  width: 450px;
+  height: 197px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.main-table table * {
+  font-family: 'Microsoft YaHei';
+  font-size: 12px;
+  line-height: 1.8;
+  background-color: #fdfdfd;
+}
+.main-table table td {
+  border: 1px solid #b6b6bb;
+}
+.main-table table td > div {
+  border-radius: 2px;
+  border: none;
+  width: 165px;
+  background-color: #ebebea;
+  position: absolute;
+  height: 4px;
+  right: 15px;
+  top: 8px;
+}
+.main-table table .main-table-id-10,
+.main-table table .main-table-id-9,
+.main-table table .main-table-id-8,
+.main-table table .main-table-id-7,
+.main-table table .main-table-id-6,
+.main-table table .main-table-id-5,
+.main-table table .main-table-id-4,
+.main-table table .main-table-id-3,
+.main-table table .main-table-id-2,
+.main-table table .main-table-id-1 {
+  position: relative;
+  text-align: left;
+}
+.main-table table .main-table-id-10 p,
+.main-table table .main-table-id-9 p,
+.main-table table .main-table-id-8 p,
+.main-table table .main-table-id-7 p,
+.main-table table .main-table-id-6 p,
+.main-table table .main-table-id-5 p,
+.main-table table .main-table-id-4 p,
+.main-table table .main-table-id-3 p,
+.main-table table .main-table-id-2 p,
+.main-table table .main-table-id-1 p {
+  border: none;
+  margin-left: 15px;
+}
+.main-table table .main-table-id-10 div > div,
+.main-table table .main-table-id-9 div > div,
+.main-table table .main-table-id-8 div > div,
+.main-table table .main-table-id-7 div > div,
+.main-table table .main-table-id-6 div > div,
+.main-table table .main-table-id-5 div > div,
+.main-table table .main-table-id-4 div > div,
+.main-table table .main-table-id-3 div > div,
+.main-table table .main-table-id-2 div > div,
+.main-table table .main-table-id-1 div > div {
+  border-radius: 4px;
+  height: 100%;
+  background-color: #ebebea;
+}
+.main-table table .main-table-id-1 div > div {
+  background-color: #EA6D51;
+  width: 90%;
+}
+.main-table table .main-table-id-2 div > div {
+  background-color: #ED7F4F;
+  width: 85%;
+}
+.main-table table .main-table-id-3 div > div {
+  background-color: #F0AA66;
+  width: 80%;
+}
+.main-table table .main-table-id-4 div > div {
+  background-color: #7DC8EE;
+  width: 75%;
+}
+.main-table table .main-table-id-5 div > div {
+  background-color: #80CAEE;
+  width: 70%;
+}
+.main-table table .main-table-id-6 div > div {
+  background-color: #7DC8ED;
+  width: 65%;
+}
+.main-table table .main-table-id-7 div > div {
+  background-color: #7DC8EE;
+  width: 60%;
+}
+.main-table table .main-table-id-8 div > div {
+  background-color: #7DC8EE;
+  width: 55%;
+}
+.main-table table .main-table-id-9 div > div {
+  background-color: #7DC8EE;
+  width: 50%;
+}
+.main-table table .main-table-id-10 div > div {
+  background-color: #82C9EC;
+  width: 45%;
 }
