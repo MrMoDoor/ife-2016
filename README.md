@@ -80,7 +80,7 @@
 	- [ ] ZknightERO
 
 - [ ] 任务九，使用HTML/CSS实现一个复杂页面
-	- [ ] harryfyodor
+	- [x] harryfyodor
 	- [ ] benwwchen
 	- [ ] Zhou-SYSU
 	- [ ] ZknightERO
