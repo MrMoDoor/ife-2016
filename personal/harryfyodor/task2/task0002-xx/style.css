@@ -1,0 +1,154 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #47484B;
+	box-sizing: border-box;
+	font-family: Lucida Sans Unicode,Verdana;
+}
+
+* {
+	font-family: Lucida Sans Unicode,Verdana;
+}
+
+button {
+	border: 1px solid #4C4C4C;
+	background-color: #47484B;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+button:hover {
+	color: #1D4ED6;
+}
+
+.container {
+	margin-top: 50px;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #1D1F21;
+	height: 500px;
+	font-size: 0;
+}
+
+.universe {
+	display: inline-block;
+	background-color: #141517;
+	font-size: 0;
+	width: 50%;
+	height: 500px;
+	position: relative;
+}
+
+.sun {
+	/* 居中 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	background-color: #D6312F;
+	 box-shadow: 0 0 10px 20px #D6312F;
+}
+
+.container:before, 
+.container:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.mediator {
+	width: 50%;
+	height: 500px;
+	display: inline-block;
+	position: relative;
+	float: right;
+}
+.control {
+	width: 80%;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 1px solid #4C4C4C;
+	position: absolute;
+	margin-left: 10%;
+}
+
+.mediator>button {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.control * {
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.control label,h3 {
+	font-size: 14px;
+	color: #1D4ED6;
+	
+}
+
+.console {
+	margin-top: 250px;
+	width: 80%;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	position: relative;
+}
+
+.console div {
+	width: 100%;
+	height: 200px;
+	display: block;
+	font-size: 14px;
+	background-color: #1D1F21;
+	border: 1px solid #4C4C4C;
+	color: #1D4ED6;
+	OVERFLOW-X: scroll;
+}
+
+
+.spaceship {
+	width: 50px;
+	height: 30px;
+	background-color: #B27FDB;
+	position: absolute;
+	top: 70px;
+	left: 235px;
+	animation: circle 5s linear 0s infinite;
+    transform-origin: 0% 600%;
+	/*animation-play-state: paused;*/
+}
+
+.pause {
+	animation-play-state: paused;	
+}
+
+.running {
+	animation-play-state: running;
+}
+
+.energy {
+	width: 80%;
+	height: 30px;
+	background-color: #85A300;
+	animation: inner-circle 5s linear 0s infinite;
+	position: absolute;
+}
+
+@keyframes circle {
+    from { transform:rotate(0deg); }
+	to { transform:rotate(360deg); }
+}
+
+@keyframes inner-circle{
+	from { transform:rotate(0deg); }
+    to { transform:rotate(0deg); }
+}
