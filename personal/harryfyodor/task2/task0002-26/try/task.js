@@ -1,8 +1,7 @@
 (function(){
-	var shipsInUniverse = [],
-		shipsForMediator = [],
-		ships = [],
-		medis = [];
+	var shipsInUniverse = [], // 用于装在宇宙中的飞船的id
+		shipsForMediator = []; // 用于装载控制台的id
+	var consoleStage = document.getElementsByClassName("console")[0].getElementsByTagName("div")[0]; // 控制台的位置
 		
 	// 定义飞船的模型
 	var Spaceship = (function(window, undefined){
@@ -10,15 +9,15 @@
 		// 飞船的私有变量
 		function Spaceship() {
 			this.id = 0;
-			this.commandId = 0;
-			this.energy = 10;
-			this.status = "running";
+			this.commandId = -1;
+			this.energy = 100;
+			this.status = "pause";
 			this.clear = false;
 		}
 		
 		// 飞船的方法
 		Spaceship.prototype = {
-			// 设置真实的id，自动分配id
+			// 设置真实的id，自动分配id，自动补全
 			deliverId : function() {
 				if (shipsInUniverse.length === 0) {
 					this.id = 0;
@@ -41,16 +40,22 @@
 				}
 			},
 			
+			// 设置飞船对应的command接口
+			setCommandId : function(id) {
+				this.commandId = id;
+			},
 			
-			// 函数中调用函数
-			//var that = this;
-			
+			// 用于设置飞船id
 			getId : function() {
 				return this.id;
 			},
 			
+			// 控制飞船的暂停
 			setPause : function() {
-			
+				// 控制台显示
+				consoleStage.innerHTML += '<p style="color:#1D4ED6;">Spaceship no' + this.id + ' has stoped.</p>';
+				consoleStage.scrollTop = consoleStage.scrollHeight;
+				
 				var ship = document.getElementById("no" + this.id);
 				
 				if(ship.className.indexOf("running")) {
@@ -65,7 +70,11 @@
 				this.clear = false;
 			},
 			
+			// 控制飞船的起飞
 			setRunning : function() {
+				// 控制台
+				consoleStage.innerHTML += '<p style="color:#1D4ED6;">Spaceship no' + this.id + ' has been running.</p>';
+				consoleStage.scrollTop = consoleStage.scrollHeight;
 				
 				var ship = document.getElementById("no" + this.id);
 				
@@ -80,59 +89,74 @@
 				this.clear = false;
 			},
 			
+			// 返回当前的飞船飞行状态
 			returnStatus : function() {
 				return this.status;
 			},
 
-			// 清除定时器 c为bool值
+			// 清除定时器 c为bool值，用于在定时器中循环是判断退出的条件。
 			setClear : function(c) {
 				this.clear = c;
 			},
-			/*
-			destory : function() {
-				this.id = 222;
-				that = {};
-				delete that;
-			}*/
 			
+			// 自爆
+			destory : function(){
+				shipsInUniverse.splice(shipsInUniverse.indexOf(this.id), 1);
+				this.id = -1;
+				this.commandId = -1;
+				delete this.prototype;
+				this.setClear(true);
+				delete this;
+			},
+			
+			// 飞船的dom生成
 			newHTML : function() {
 				var universe = document.getElementsByClassName("universe")[0];
-				//var content = '<div class="spaceship pause"' + 'id=' + '"' + 'no' + spaceshipthis.id + '"' + '><div class="energy"></div></div>';
-				//universe.innerHTML = universe.innerHTML + content;
 				var div = document.createElement("div");
 				div.setAttribute("class", "spaceship pause");
 				div.setAttribute("id", "no" + this.id);
 				var div2 = document.createElement("div");
 				div2.setAttribute("class", "energy");
+				var span = document.createElement("span");
+				var text = document.createTextNode("100%");
+				span.appendChild(text);
+				div2.appendChild(span);
 				div.appendChild(div2);
 				universe.appendChild(div);
-				// return content;
 			},
 			
-			// 最关键的部分
+			// 最关键的部分，设置定时器
 			energyCounting : function() {
 				console.log(this.energy);
 				console.log(this.status);
 				var that = this;
 				
 				var energyUpdating = setInterval(function(){
-					
-					console.log(that.energy);
-					console.log(that.status);
-					
+
 					if (that.energy === 0 && that.status === "running") {
 						that.status = "pause";
-					} else if (that.energy === 10 && that.status === "pause") {
-						that.energy = 10;
+						that.setPause();
+					} else if (that.energy === 100 && that.status === "pause") {
+						that.energy = 100;
 					} else if (that.status === "running") {
-						that.energy = that.energy - 1;
+						that.energy = that.energy - 2;
 					} else if (that.status === "pause") {
-						that.energy = that.energy + 1;
+						that.energy = that.energy + 2;
+					}
+					
+					// 设置能量显示
+					if (that.commandId != -1 && that.id != -1) {
+						// console栏
+						var label = document.getElementById("command" + that.commandId).getElementsByTagName("label")[1];
+						var width = document.getElementById("no" + that.id).getElementsByClassName("energy")[0].style.width = that.energy + "%";
+						label.innerHTML = that.energy + "%";
+						// 飞船
+						document.getElementById("no" + that.id).getElementsByTagName("span")[0].innerHTML = that.energy + "%";
 					}
 					if (that.clear) {
 						clearInterval(energyUpdating);
 					}
-				}, 1000);
+				}, 500);
 			}
 		}
 		
@@ -152,7 +176,7 @@
 		}
 		
 		Mediators.prototype =  {
-			
+			// 自动分配控制台的id值，自动补全。
 			deliverId : function() {
 				if (shipsForMediator.length === 0) {
 					this.id = 0;
@@ -174,23 +198,26 @@
 				}
 			},
 			
+			// 获取控制台的id
 			getId : function() {
 				return this.id;
 			},
 			
+			// 联系控制台和飞船的接口。
 			connectTo : function(spaceship) {
 				this.connect = spaceship;
 				this.shipId = spaceship.getId();
 				console.log(this.shipId);
 			},
 			
+			// 返回控制台所控制的飞船。
 			spaceship : function(){
 				return this.connect;
 			},
 			
+			// 控制台的dom操作，非常恶心。
 			newHTML : function(){
 				var control = document.getElementsByClassName("control")[0];
-				//var content = '<div id="command' + mediatorsInfo.id + '"><label>Spaceship no.' + mediatorsInfo.id + '</label><button>Set off</button><button>Stop</button><button>Disposal</button><label>100%</label></div>';
 				// 恶心的dom
 				var div = document.createElement("div");
 				div.setAttribute("id", "command" + this.id);
@@ -215,11 +242,10 @@
 				div.appendChild(btn3);
 				div.appendChild(label2);
 				control.appendChild(div);
-				//control.innerHTML = control.innerHTML + content;
-				// 在这里添加事件
 				this.addFunctiong();
 			},
 			
+			// 给控制台按钮新增事件
 			addFunctiong : function() {
 				var that = this;
 				if (!this.fake) {
@@ -228,17 +254,55 @@
 					var commandBtn = command.getElementsByTagName("button");
 					var ship = document.getElementById("no" + this.shipId);
 					commandBtn[0].onclick = function() {
-						that.connect.setClear(true);
-						that.connect.setRunning();
-						console.log(that.connect.getId());
+						var rand = Math.random()*10;
+						if (rand <= 3) {
+							consoleStage.innerHTML += '<p style="color:red;">Your command has been lost!</p>'
+						} else {
+							that.connect.setClear(true);
+							that.connect.setRunning();
+							console.log(that.connect.getId());
+						}
 					}
 					commandBtn[1].onclick = function() {
-						that.connect.setClear(true);
-						that.connect.setPause();
-						console.log(that.connect.getId());
+						var rand2 = Math.random()*10;
+						if (rand2 <= 3) {
+							consoleStage.innerHTML += '<p style="color:red;">Your command has been lost!</p>'
+						} else {
+							that.connect.setClear(true);
+							that.connect.setPause();
+							console.log(that.connect.getId());
+						}
 					}
 					commandBtn[2].onclick = function() {
-						console.log(that.shipId);
+						// 删除编号
+						for (var i = 0; i < shipsInUniverse.length; i++) {
+							if (shipsInUniverse[i] == that.connect.id) {
+								shipsInUniverse.splice(i, 1);
+							}
+						}
+						for (var j = 0; j < shipsForMediator.length; j++) {
+							if (shipsForMediator[j] == that.id) {
+								shipsForMediator.splice(j, 1);
+							}
+						}
+						consoleStage.innerHTML += '<p style="color:#D88427;">Spaceship no' + that.connect.getId() + ' has been destoryed.</p>'; 
+						
+						// 设置id为-1，使之无法占用一个编号。
+						var mediaterId = that.id;
+						that.id = -1;
+						var spaceshipId = that.connect.getId();
+						that.connect.destory();
+						
+						// 删除对应的dom
+						var deleteMediater = document.getElementById("command" + mediaterId);
+						delete that.connect; delete this; delete that;
+						deleteMediater.parentNode.removeChild(deleteMediater);
+						
+						var deleteSpaceship = document.getElementById("no" + spaceshipId)
+						deleteSpaceship.parentNode.removeChild(deleteSpaceship);
+						
+						// 控制台显示最后
+						consoleStage.scrollTop = consoleStage.scrollHeight;
 					}
 				}
 			}
@@ -250,48 +314,27 @@
 	// 非常注意的一点就是，千万不要改变按钮
 	var newBtn = document.getElementsByClassName("mediator")[0].getElementsByTagName("button")[0];
 	newBtn.onclick = function() {
-		console.log("hi");
-		
-		var newSpaceship = new Spaceship();
-		newSpaceship.deliverId();	console.log(newSpaceship.getId());
-		newSpaceship.newHTML();
-		
-		var newMediator = new Mediators();
-		newMediator.deliverId(); console.log(shipsForMediator);
-		newMediator.newHTML();
-		// 联系起来
-		console.log(newSpaceship.getId())
-		newMediator.connectTo(newSpaceship);
-		
-		ships.push(newSpaceship);
-		medis.push(newMediator);
-		
-		//refreshEvent();
-		console.log(ships);
-		for (var i = 0; i < ships.length; i++) {
-			console.log(ships[i].getId());
+		if (shipsForMediator.length < 4 && shipsInUniverse.length < 4) {
+			// 飞船的新建
+			var newSpaceship = new Spaceship();
+			newSpaceship.deliverId();	
+			newSpaceship.newHTML();
+			// 控制台的新建
+			var newMediator = new Mediators();
+			newMediator.deliverId(); console.log(shipsForMediator);
+			newMediator.newHTML();
+			// 联系起来
+			newMediator.connectTo(newSpaceship);
+			newSpaceship.setCommandId(newMediator.getId());
+			// 能量计数启动
+			newSpaceship.energyCounting();
+			// 控制台显示
+			consoleStage.innerHTML += '<p style="color:#1D4ED6;">Spaceship no' + newSpaceship.getId() + ' has been built.</p>'; 
+			consoleStage.scrollTop = consoleStage.scrollHeight;
+		} else {
+			consoleStage.innerHTML += '<p style="color:red;">Spaceships have been up to the maximum!</p>'; 
 		}
-	}
-	/*
-	var one = new Spaceship();
-	one.deliverId();
-	var dws = new Spaceship();
-	dws.deliverId();
-	console.log(one.getId());
-	console.log(dws.getId());
-	console.log(shipsInUniverse);
-	one.energyCounting();
-	
-	document.onclick = function() {
-		one.setClear(true);
-		one.setRunning();
-	}
-	*/
-	document.onclick = function() {
-		/*one.setClear(true);
-		one.setRunning();*/
-	}
-	
+	}	
 })();
 
 

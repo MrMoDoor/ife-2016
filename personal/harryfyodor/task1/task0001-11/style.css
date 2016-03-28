@@ -1,0 +1,242 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Microsoft YaHei";
+}
+
+html {
+	font-size: 16px;
+	background-color: #F5F5F5;
+}
+
+body {
+	position: relative;
+}
+
+header {
+	position: relative;
+	width: 100%;
+	height: 3rem;
+	background-color:#91D4DA;
+}
+
+header span {
+	position: absolute;
+	font-size: 1.4rem;
+	position: absolute;
+	left: 1.6rem;
+	top: 50%;
+	transform: translate(0, -50%);
+	color: white;
+}
+
+header h1 {
+	position: absolute;
+	font-size: 1.4rem;
+	width: 6.6rem;
+	/*居中*/
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+header img {
+	width: 0.8rem;
+	margin-top: 0.8rem;
+	margin-left: 0.6rem;
+}
+
+nav {
+	font-size: 0;
+	background-color: white;
+	height: 3rem;
+}
+
+nav li {
+	list-style: none;
+	display: inline-block;
+	font-size: 0px;
+	width: 20%;
+	height: 3rem;
+	text-align: center;
+	position: relative;
+}
+
+nav a {
+	position: relative;
+	top: 0.8rem;
+	font-size: 1.2rem;
+	text-decoration: none;
+	color: black;
+}
+
+.nav-active {
+	border-bottom: 3px solid #91D4DA;
+}
+
+nav li:hover {
+	border-bottom: 3px solid #91D4DA;
+}
+
+.sec1 {
+	width: 100%;
+}
+
+.sec1 img {
+	width: 100%;
+}
+
+.sec2 {
+	background-color: white;
+	text-align: center;
+	font-size: 0;
+	justify-content: center;
+}
+
+.sec2 li {
+	display: inline-block;
+	width: 18%;
+	margin-top: 1.2rem;
+	padding:0  0.6rem;
+	padding-bottom: 1.2rem;
+	border-bottom: 3px solid #DEDEDE;
+}
+
+.sec2 li img {
+	width: 80%;
+}
+
+.sec2 li p {
+	padding-top: 0.5rem;
+	font-size: 1rem;
+}
+
+.sec3 {
+	display: flex;
+	background-color: white;
+	text-align: center;
+	font-size: 0;
+}
+
+.sec3 li {
+	width: 30%;
+	display: inline-block;
+	text-align: center;
+	margin-top: 1rem;
+	border-right: 2px solid #DEDEDE;
+	font-size: 1rem;
+	margin-bottom: 1rem;
+}
+
+.sec3 li img {
+	width: 50%;
+}
+
+.sec3 li:last-child img{
+	width: 80%;
+}
+
+.sec3 li:last-child {
+	border: none;
+}
+
+.sec4 {
+	font-size: 0;
+	background-color: white;
+	margin-top: 1rem;
+	padding-top: 1rem;
+
+}
+
+.sec4 h2 {
+	font-size: 1.4rem;
+	margin-left: 1rem;
+	margin-bottom: 0.3rem;
+	display: block;
+	text-align: left;
+}
+
+.sec4>div {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 1rem;
+}
+.sec4>div>div {
+	width: 30%;
+	margin-left: 0.3rem;
+}
+
+.sec4 img {
+	width: 100%;
+}
+
+.page {
+	position: relative;
+	font-size: 1rem;
+}
+
+.page div {
+	width: 100%;
+	height: 3rem;
+	background-color: #F8F8F8;
+	text-align: center;
+	padding-top: 0.8rem;
+}
+
+.page div:last-child {
+	margin-bottom: 0rem;
+	position: absolute;
+	bottom: 0;
+}
+
+.sec5 {
+	margin-top: 1rem;
+	background-color: white;
+	display: flex;
+	padding-top: 1rem;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+.sec5>div {
+	display: inline-block;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.sec5 div:first-child {
+	width: 35%;
+	margin-right: 1rem;
+}
+
+.sec5 div:first-child img {
+	width: 100%;
+}
+
+.sec5 div:last-child {
+	width: 50%;
+}
+
+.sec5 div:last-child p {
+	position: absolute;
+	bottom: 0rem;
+	color: #E9EBEA;
+}
+
+.sec6 {
+	padding: 1rem;
+	background-color: white;
+	margin-bottom: 1rem;
+}
+
+.sec6 p {
+	color: #E9EBEA;
+}
+
+.sec6>div img {
+	display: inline-block;
+	width: 30%;
+	margin-right: 0.5rem;
+}
