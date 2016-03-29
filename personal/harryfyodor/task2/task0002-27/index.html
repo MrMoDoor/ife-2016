@@ -15,7 +15,18 @@
 			</div>
 			-->
 		</div>
-		<div class="manager"><button>NEW SPACESHIP</button>
+		<div class="manager">
+		<button>NEW SPACESHIP</button>
+		<select id="speed">
+			<option value="">high-speed</option>
+			<option value="" selected>average-speed</option>
+			<option value="">low-speed</option>
+		</select>
+		<select id="recover">
+			<option value="">high-recovery</option>
+			<option value="" selected>average-recovery</option>
+			<option value="">low-recovery</option>
+		</select>
 			<div class="control">
 				
 				<!--
@@ -34,8 +45,17 @@
 				</div>
 			</div>
 		</div>
+		<div class="info">
+			<div id="info0">
+			</div>
+			<div id="info1">
+			</div>
+			<div id="info2">	
+			</div>
+			<div id="info3">
+			</div>
+		</div>
 	</div>
-	
 	<!--<script src="task.js"></script></script>-->
 	<script data-main="scripts/main" src="scripts/require.js"></script>
 </body>
