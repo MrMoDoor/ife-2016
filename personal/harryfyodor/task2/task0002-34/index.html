@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十四：听指令的小方块（二）</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+	<div class="container">
+		<div id="square" style="left:180px; top:180px; transform:rotate(0deg)">
+			<div></div>
+		</div>
+		<table>
+			<tr>
+				<td></td>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<input type="text">
+		<button>执行</button>
+	</div>
+	<div class="description">
+		<h3>会移动的小方块</h3>
+		<ol>
+			<li>在输入框中允许输入如下指令，按下按钮后，使得正方形做相应动作</li>
+			<li>GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）</li>
+			<li>TUN LEF：向左转（逆时针旋转90度）</li>
+			<li>TUN RIG：向右转（顺时针旋转90度）</li>
+			<li>TUN BAC：向右转（旋转180度）</li>
+			<li>TRA LEF：向屏幕的左侧移动一格，方向不变</li>			
+			<li>TRA TOP：向屏幕的上面移动一格，方向不变</li>
+			<li>TRA RIG：向屏幕的右侧移动一格，方向不变</li>
+			<li>TRA BOT：向屏幕的下面移动一格，方向不变</li>
+			<li>MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格</li>
+			<li>MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格</li>
+			<li>MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格</li>
+			<li>MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格</li>
+			<li>移动不能超出格子空间</li>
+		</ol>
+	</div>
+	<script src="task.js"></script>
+</body>
+</html>

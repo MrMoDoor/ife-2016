@@ -1,0 +1,123 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Microsoft YaHei" ;
+}
+
+body {
+	display: flex;
+}
+
+.container {
+	width: 550px;
+	display: inline-block;
+	font-size: 0;
+	position: relative;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 16px;
+	margin: 20px 10px 20px 20px;
+}
+
+td {
+	border-collapse: collapse;
+	width: 40px;
+	height: 40px;
+	border: 1px solid black;
+}
+
+td:first-child {
+	border: none;
+}
+
+tr:first-child td {
+	border: none;
+}
+
+#square {
+	width: 40px;
+	height: 40px;
+	background-color: blue;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}
+
+#square div {
+	width: 100%;
+	height: 10px;
+	background-color: red;
+}
+
+input {
+	width: 200px;
+	height: 30px;
+	margin: 10px 0px 0px 60px; 
+}
+
+button {
+	height: 30px;
+	width: 70px;
+}
+
+.description {
+	display: inline-block;
+	width: 550px;
+}
+
+.description * {
+	line-height: 1.5;
+}
+
+h3 {
+	margin-top: 60px;
+	margin-left: 30px;
+}
+
+ol {
+	margin-left: 30px;
+}
+
+@keyframes turn-right {
+	0% {
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(90deg);
+	}
+}
+
+.face-right {
+	animation: turn-right 2s;
+}
+
+@keyframes turn-left {
+	0% {
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(-90deg);
+	}
+}
+
+.face-left {
+	animation: turn-left 2s;
+}
+
+@keyframes turn-back {
+	0% {
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(180deg);
+	}
+}
+
+.face-back {
+	animation: turn-back 2s;
+}
+
