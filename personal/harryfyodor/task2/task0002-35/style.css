@@ -1,0 +1,128 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Microsoft YaHei" ;
+}
+
+body {
+	display: flex;
+}
+
+.container {
+	width: 550px;
+	display: inline-block;
+	font-size: 0;
+	position: relative;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 16px;
+	margin: 20px 10px 20px 20px;
+}
+
+td {
+	border-collapse: collapse;
+	width: 40px;
+	height: 40px;
+	border: 1px solid black;
+}
+
+td:first-child {
+	border: none;
+}
+
+tr:first-child td {
+	border: none;
+}
+
+#square {
+	width: 40px;
+	height: 40px;
+	background-color: blue;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}
+
+#square div {
+	width: 100%;
+	height: 10px;
+	background-color: red;
+}
+
+input {
+	width: 200px;
+	height: 30px;
+	margin: 10px 0px 0px 60px; 
+}
+
+button {
+	height: 30px;
+	width: 70px;
+}
+
+.description {
+	display: inline-block;
+	width: 550px;
+}
+
+.description * {
+	line-height: 1.5;
+}
+
+h3 {
+	font-size: 20px;
+	margin-top: 40px;
+	margin-left: 30px;
+}
+
+p {
+	font-size: 16px;
+	margin-left: 30px;
+}
+
+.command {
+	position: relative;
+}
+
+ul {
+	position: absolute;
+	margin-top: 60px;
+	left: -20px;
+	height: 365px;
+	overflow: hidden;
+}
+
+li {
+	margin-top: 2px;
+	list-style: none;
+	border-radius: 10px;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	/*background-color: red;*/
+}
+
+textarea {
+	line-height: 22px;
+	font-size: 16px;
+	height: 370px;
+	width: 300px;
+	margin-top: 60px;
+	position: absolute;
+}
+
+button {
+	position: absolute;
+	top:430px;
+}
+
+.command p {
+	position: absolute;
+	top:430px;
+	left: 100px;
+	line-height: 30px;
+}
