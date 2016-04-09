@@ -1,51 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>新世界</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-    <img src="img/logo.png" alt="Logo">
-    <h1>新世界</h1>
+    <img src="img/logo.jpg" alt="Logo">
+    <h3>新世界</h3>
     <ul class="nav">
         <li><a href="#">首页</a></li>
-        <li><a href="#">最新活动</a></li>
-        <li><a href="#">项目介绍</a></li>
-        <li><a href="#">爱心社区</a></li>
-        <li><a href="#">关于我们</a></li>
+        <li><a href="#section-2">最新活动</a></li>
+        <li><a href="#section-3">项目介绍</a></li>
+        <li><a href="#section-4">爱心社区</a></li>
+        <li><a href="#section-5">关于我们</a></li>
+        <li><a href="#"><img src="img/login.jpg">登录</a></li>
     </ul>
 </header>
 <div class="content">
     <div id="section-1">
-        <img src="img/background.jpg" alt="new life">
+        <img src="img/section-1.jpg" alt="new life">
         <h2 id="slogan">Time of new life</h2>
-        <p>新时代,年轻的人们让我们一起体验新生活,享受新生活</p>
+        <p>新时代，年轻的人们让我们一起体验新生活，享受新生活</p>
         <button id="start">开始体验</button>
         <ul id="section-1-columns">
             <li>
                 <img src="img/section-1-1.jpg" alt="icon-1">
-                <p>打造全新世界观,让你更爱你的生活</p>
+                <div><p>打造全新世界观，让你更爱你的生活</p></div>
             </li>
             <li>
                 <img src="img/section-1-2.jpg" alt="icon-2">
-                <p>丰富多彩的公益活动,发挥新世界的主人公意识</p>
+                <div><p>丰富多彩的公益活动，发挥新世界的主人公意识</p></div>
             </li>
             <li>
                 <img src="img/section-1-3.jpg" alt="icon-3">
-                <p>时尚的新理念,超前体验未知的生活</p>
+                <div><p>时尚的新理念，超前体验未知的生活</p></div>
             </li>
             <li>
                 <img src="img/section-1-4.jpg" alt="icon-4">
-                <p>完善的培养机制,培养你全新的世界观</p>
+                <div><p>完善的培养机制，培养你全新的世界观</p></div>
             </li>
         </ul>
     </div>
     <div id="section-2">
-        <img src="img/section-2-icon.jpg" alt="icon">
-        <h2>关于新世界,你不知道的还有什么?</h2>
-        <img src="img/section-2-background.jpg" alt="background">
-        <h3>查找新世界城市活动信息</h3>
+        <img id="section-2-logo" src="img/logo-big.png" alt="icon">
+        <h2>关于新世界，你不知道的还有什么？</h2>
+    </div>
+    <div id="section-3">
+        <img id="background-2" src="img/section-2-background.jpg" alt="background">
+        <div id="header-wrapper">
+            <h3>查找新世界城市活动信息</h3>
+            <div id="border-box"></div>
+        </div>
         <p>每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
         <select name="country">
             <option value="中国">中国</option>
@@ -66,17 +73,20 @@
         </select>
         <button id="search">搜索</button>
     </div>
-    <div id="section-3">
+    <div id="section-4">
         <ul id="activities">
             <li>
                 <img src="img/beijing.jpg" alt="beijing">
                 <h3>北京活动</h3>
                 <p>新社区大联盟</p>
             </li>
-            <li>
-                <img src="img/shanghai.jpg" alt="shanghai">
-                <h3>上海活动</h3>
+            <li id="shanghai">
+                <h3>上</h3>
+                <h3>海</h3>
+                <h3>活</h3>
+                <h3>动</h3>
                 <p>夜上海新景观探索</p>
+                <img src="img/shanghai.jpg" alt="shanghai">
             </li>
             <li>
                 <img src="img/shenzhen.jpg" alt="shenzhen">
@@ -90,16 +100,16 @@
             </li>
         </ul>
     </div>
-    <div id="section-4">
-        <div class="section-4-box" id="box-1">
-            <h2 class="chs">新世界</h2>
-            <h2 class="eng">TIME</h2>
+    <div id="section-5">
+        <div class="section-5-box" id="box-1">
+            <h3 class="chs-title">新世界</h3>
+            <h3 class="eng-title">TIME</h3>
             <p>@新世纪 - 北京</p>
             <p>2016.04.01</p>
         </div>
-        <div class="section-4-box" id="box-2">
-            <p>新世界 <span>／01</span></p>
-            <p>新世界是个新世界新世界是个新世界新世界是个新世界
+        <div class="section-5-box" id="box-2">
+            </br><p id="box-2-title">新世界／<span>01</span></p>
+            <p id="intro">新世界是个新世界新世界是个新世界新世界是个新世界
                 新世界是个新世界新世界是个新世界新世界是个新世界
                 新世界是个新世界新世界是个新世界新世界是个新世界
                 新世界是个新世界新世界是个新世界</p>
@@ -110,38 +120,43 @@
                 <li id="detail-3"></li>
             </ul>
         </div>
-        <div class="section-4-box" id="box-3">
+        <div class="section-5-box" id="box-3">
             <p>新时代</br>
                 关于爱生活的我们
             </p>
+            <div id="border-box-2"></div>
+            </br>
             <button>查看更多</button>
         </div>
-        <div class="section-4-box" id="box-4">
+        <div class="section-5-box" id="box-4">
             <p>新时代</br>
                 关于爱生活的我们
             </p>
+            <div id="border-box-3"></div>
+            </br>
             <button>查看更多</button>
         </div>
-        <div class="section-4-box" id="box-5">
-            <img src="img/section-4-box-5-background.jpg" alt="bg">
+        <div class="section-5-box" id="box-5">
+            </br>
         </div>
     </div>
-    <div id="section-5">
+    <div id="section-6">
         <h2>成为我们的志愿者</h2>
+        <div id="border-box-4"></div>
         <p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情</br>
             那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
         <div id="terms">
             <h3>新世界志愿者协议</h3>
             <p>加入新世界志愿者的人员必须遵守中华人民共共和国的相关法律法规，并且本着平等资源的原则 ......</p>
-            <button>more</button>
+            <button>↓more</button>
             <h3>新世界志愿者权利</h3>
             <p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</p>
-            <button>more</button>
+            <button>↓more</button>
             <h3>更多条款</h3>
-            <button>more</button>
+            <button>↓more</button>
         </div>
 
-        <form name="sign up" action="">
+        <form id="form" name="sign up" action="">
             <p>
                 <label>姓名</label>
                 <input type="name" name="name"/>
@@ -159,32 +174,32 @@
                 <input type="address" name="address"/>
             </p>
             <p>
+                <textarea name="description" id="" cols="93"
+                          rows="3"></textarea>
                 <label>请简单描述您梦想的生活</label>
-                <textarea name="description" id="" cols=""
-                          rows="10"></textarea>
             </p>
             <input id="form-submit" class="submit" type="submit" value="提交申请"/>
         </form>
     </div>
-    <div id="section-6">
+    <div id="section-7">
         <h2>联系我们</h2>
-        <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯
+        <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯</br>
             也可以通过以下任何方式关注我们动态</p>
         <p>
             <input type="email" name="email" placeholder="someone@email.com"/>
-            <input class="submit" id="email-submit"  type="submit" value="提交申请"/>
+            <button>提交</button>
         </p>
         <ul>
-            <li><a href=""><img src="img/qq.jpg" alt="qq"></a></li>
-            <li><a href=""><img src="img/weibo.jpg" alt="weibo"></a></li>
-            <li><a href=""><img src="img/twitter.jpg" alt="twitter"></a></li>
-            <li><a href=""><img src="img/internet.jpg" alt="earth"></a></li>
+            <li><a href=""><img src="img/qq.png" alt="qq"></a></li>
+            <li><a href=""><img src="img/weibo.png" alt="weibo"></a></li>
+            <li><a href=""><img src="img/twitter.png" alt="twitter"></a></li>
+            <li><a href=""><img src="img/world.png" alt="earth"></a></li>
         </ul>
     </div>
 </div>
 <footer>
     <p>@2016新世界</p>
-    <a href="#header">Back to top</a>
+    <a href="#">Back to top</a>
 </footer>
 </body>
 </html>

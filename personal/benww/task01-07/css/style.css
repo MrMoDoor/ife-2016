@@ -1,0 +1,637 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Tahoma, Arial, PingFang SC, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+header {
+    /*    overflow: hidden;*/
+    min-width: 1280px;
+    height: 56px;
+}
+
+header > img {
+    margin: 13px 0px 13px 59px;
+}
+
+header > h3 {
+    color: #39393a;
+    font: 21px;
+    position: absolute;
+    left: 101px;
+    top: 18px;
+    width: 62px;
+    height: 21px;
+}
+
+.nav {
+    float: right;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0 20px;
+    padding: 0;
+}
+
+.nav > li {
+    float: left;
+    padding: 20px 15px;
+}
+
+.nav > li > a {
+    color: #787b83;
+    font: 400 14px;
+    text-decoration: none;
+}
+
+.nav > li:first-child {
+    border-bottom: solid 5px red;
+}
+
+.nav > li:first-child > a {
+    color: #e74f4d;
+}
+
+.nav > li:last-child > a {
+    color: #e74f4d;
+    font-weight: 700;
+}
+
+.nav img {
+    margin: 0 5px 0;
+    vertical-align: middle;
+}
+
+#section-1 {
+    height: 941px;
+}
+
+#section-1 > h2 {
+    position: absolute;
+    color: #ffffff;
+    font: 400 60px normal;
+    top: 286px;
+    left: 117px;
+}
+
+#section-1 > p {
+    position: absolute;
+    color: #fffdfe;
+    font: 400 21px / 16px normal;
+    width: 295px;
+    line-height: 26px;
+    height: 53px;
+    top: 366px;
+    left: 124px;
+}
+
+#section-1 > button {
+    width: 331px;
+    height: 65px;
+    position: absolute;
+    top: 485px;
+    left: 126px;
+    background-color: #e74f4d;
+    color: #ffffff;
+    font: 400 30px normal;
+    border: 0;
+}
+
+#section-1-columns {
+    position: absolute;
+    top: 747px;
+    width: 100%;
+    min-width: 1280px;
+    background-color: white;
+    list-style: none;
+
+}
+
+#section-1-columns > li {
+    float: left;
+    display: inline-block;
+    width: 25%;
+    height: 250px;
+    box-sizing: border-box;
+    color: #767777;
+    text-align: center;
+}
+
+#section-1-columns img {
+    position: relative;
+    top: 45px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#section-1-columns div {
+    width: 100%;
+    height: 50px;
+    display: block;
+    top: 133px;
+    margin-top: 87px;
+    border-right: solid 2px #aaaaaa;
+}
+
+#section-1-columns > li:last-child > div {
+    border: transparent;
+}
+
+#section-1-columns p {
+    font: 400 14px / 18px normal;
+    width: 153px;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+#section-2 {
+    background-color: #ececec;
+    text-align: center;
+    height: 361px;
+    min-width: 1280px;
+}
+
+#section-2-logo {
+    position: absolute;
+    top: 1086px;
+}
+
+#section-2 > h2 {
+    position: relative;
+    top: 229px;
+    color: rgba(50, 51, 51, 0.5);
+    font: 400 53.59px / 56.603px normal;
+}
+
+#background-2 {
+    display: block;
+}
+
+#section-3 {
+    height: 341px;
+
+    text-align: center;
+}
+
+#section-3 h3 {
+    width: 100%;
+    color: #ffffff;
+    font: 400 21px / 41.879px normal;
+}
+
+#section-3 > #header-wrapper {
+    position: absolute;
+    top: 1410px;
+    height: 32px;
+    width: 100%;
+    text-align: center;
+}
+
+#border-box {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    width: 31px;
+    border-bottom: solid 3px white;
+}
+
+#section-3 > p {
+    position: relative;
+    top: -235px;
+    color: rgba(255, 255, 255, 0.8);
+    font: 400 12px / 31.266px normal;
+    text-align: center;
+}
+
+#section-3 > select {
+    position: relative;
+    top: -170px;
+    width: 236px;
+    height: 36px;
+}
+
+#section-3 > button {
+    position: relative;
+    top: -170px;
+    width: 236px;
+    height: 36px;
+    background-color: #bf4f49;
+    border: 0;
+    color: #ffffff;
+    font: 400 14px / 26.55px normal;
+}
+
+#section-4 {
+    background-color: #f7f7f7;
+    height: 603px;
+}
+
+#section-4 > #activities {
+    list-style: none;
+}
+
+#section-4 > #activities > li {
+    float: left;
+    display: inline-block;
+    width: 25%;
+    height: 250px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#section-4 > #activities img {
+    position: relative;
+    top: 101px;
+    padding: 10px;
+    background-color: white;
+    border: solid 1px #dadada;
+}
+
+#section-4 > #activities h3 {
+    position: relative;
+    top: 120px;
+    font-weight: normal;
+    line-height: 38px;
+}
+
+#section-4 > #activities p {
+    position: relative;
+    top: 120px;
+    color: grey;
+}
+
+#section-4 > #activities > #shanghai h3 {
+    display: inline;
+    margin: 16px;
+    top: 101px;
+    font-size: 20px;
+
+}
+
+#section-4 > #activities > #shanghai p {
+    top: 101px;
+}
+
+#section-5 {
+    display: block;
+    height: 1088px;
+    min-width: 1280px;
+}
+
+.section-5-box {
+    display: inline-table;
+    width: 33%;
+    height: 521px;
+}
+
+#box-1 {
+    width: 66%;
+    height: 567px;
+    background: url(../img/section-5-background.jpg);
+    text-align: center;
+}
+
+#box-1 > .chs-title {
+    position: relative;
+    top: 132px;
+    color: #ffffff;
+    font: 400 49.47px / 75.583px normal;
+}
+
+#box-1 > .eng-title {
+    position: relative;
+    top: 132px;
+    color: #ffffff;
+    font: 400 157.79px / 241.065px normal;
+    line-height: 130px;
+}
+
+#box-1 > p {
+    position: relative;
+    top: 132px;
+    color: #ffffff;
+    font: 400 21.91px / 43.148px normal;
+}
+
+#box-2 {
+    text-align: center;
+}
+
+#box-2 > #box-2-title {
+    position: relative;
+    top: 130px;
+    font: 24px normal;
+    text-align: center;
+}
+
+#box-2 span {
+    color: red;
+}
+
+#box-2 > #intro {
+    position: relative;
+    top: 150px;
+    width: 288px;
+    color: #abaaaa;
+    font: 400 12px / 30px normal;
+    text-align: left;
+    margin: auto;
+}
+
+#box-2 > button {
+    position: relative;
+    top: 210px;
+    width: 107px;
+    height: 35px;
+    background-color: white;
+    color: #e35c60;
+    font: 400 12px / 31.356px;
+    border: solid 1px #e35c60;
+}
+
+#box-2 > ul {
+    position: relative;
+    top: 220px;
+    list-style: none;
+    text-align: center;
+}
+
+#box-2 > ul > li {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    text-align: center;
+    margin: 8px;
+    border: solid 1px grey;
+    border-radius: 100%;
+}
+
+#box-2 > ul > li:first-child {
+    background-color: grey;
+}
+
+#box-3 {
+    background-color: #e74f4d;
+    text-align: center;
+}
+
+#box-3 > p {
+    position: relative;
+    top: 173px;
+    color: #ffffff;
+    font: 400 21px / 30.362px normal;
+}
+
+#box-3 > button {
+    width: 170px;
+    height: 44px;
+    background-color: #e74f4d;
+    border: solid 1px white;
+    color: #ffffff;
+    font: 400 21px / 24px normal;
+    position: relative;
+    top: 200px;
+}
+
+#border-box-2 {
+    display: inline-block;
+    position: relative;
+    top: 180px;
+    width: 32px;
+    border-bottom: solid 3px white;
+}
+
+#box-4 {
+    text-align: center;
+}
+
+#box-4 > p {
+    position: relative;
+    top: 173px;
+    color: #323333;
+    font: 400 21px / 30.362px normal;
+}
+
+#box-4 > button {
+    width: 170px;
+    height: 44px;
+    background-color: white;
+    border: solid 1px #e74f4d;
+    color: #e74f4d;
+    font: 400 21px / 24px normal;
+    position: relative;
+    top: 200px;
+}
+
+#border-box-3 {
+    display: inline-block;
+    position: relative;
+    top: 180px;
+    width: 32px;
+    border-bottom: solid 3px #aaaaaa;
+}
+
+#box-5 {
+    background: url(../img/section-5-background-2.jpg);
+}
+
+#section-6 {
+    position: relative;
+    height: 749px;
+    text-align: center;
+    min-width: 1280px;
+}
+
+#section-6 > h2 {
+    position: absolute;
+    top: 118px;
+    width: 100%;
+    color: #323333;
+    font: bold 21px / 30.362px normal;
+    text-align: center;
+}
+
+#border-box-4 {
+    position: absolute;
+    top: 150px;
+    display: block;
+    width: 32px;
+    border-bottom: solid 3px #e74f4d;
+    text-align: center;
+    left: 50%;
+    margin-left: -16px;
+}
+
+#section-6 > p {
+    position: absolute;
+    width: 100%;
+    top: 170px;
+    color: #abaaaa;
+    font: 400 12px / 18px normal;
+}
+
+#section-6 > #terms {
+    position: absolute;
+    top: 304px;
+    left: 138px;
+    text-align: left;
+    width: 288px;
+}
+
+#section-6 > #terms > h3 {
+    color: rgba(34, 24, 21, 0.8);
+    font: bold 14px normal;
+    height: 41px;
+}
+
+#section-6 > #terms > p {
+    color: rgba(34, 24, 21, 0.6);
+    font: 400 12px / 21px normal;
+    line-height: 22px;
+}
+
+#section-6 > #terms > button {
+    border: 0;
+    background-color: white;
+    text-align: right;
+    width: 100%;
+    color: rgba(34, 24, 21, 0.6);
+    font: 400 12px / 19.448px normal;
+}
+
+#section-6 > form {
+    position: absolute;
+    top: 300px;
+    left: 501px;
+    width: 639px;
+}
+
+#form input, #form textarea {
+    border: 0;
+    background-color: #ededee;
+    line-height: 41px;
+}
+
+#form > p {
+    background-color: #ededee;
+    text-align: left;
+    display: inline-block;
+    height: 41px;
+    line-height: 41px;
+    margin: 5px 0;
+    text-indent: 12px;
+}
+
+#form > p:nth-child(1), #form > p:nth-child(3) {
+    width: 311px;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+#form > p:nth-child(2), #form > p:nth-child(4) {
+    width: 311px;
+}
+
+#form > p:nth-child(5), #form > :nth-child(6) {
+    width: 100%;
+}
+
+#form > p:nth-child(5) {
+    height: 121px;
+}
+
+#form > p:nth-child(5) > label {
+    float: left;
+    position: relative;
+    top: -120px;
+}
+
+#form > p:nth-child(5) > textarea {
+    float: left;
+    line-height: 40px;
+    text-indent: 200px;
+}
+
+#form > input {
+    height: 41px;
+    line-height: 41px;
+    color: #323333;
+    font: bold 14px normal;
+}
+
+#section-7 {
+    height: 361px;
+    background-color: #32353e;
+    text-align: center;
+    position: relative;
+}
+
+#section-7 > h2 {
+    color: #ffffff;
+    font: 400 21px / 48.368px normal;
+    position: absolute;
+    width: 100%;
+    top: 91px;
+}
+
+#section-7 > p {
+    color: #ffffff;
+    font: 400 12px / 18px normal;
+    position: relative;
+    top: 130px;
+}
+
+#section-7 > p:nth-child(3) {
+    top: 160px;
+}
+
+#section-7 > p:nth-child(3) > input {
+    height: 41px;
+    width: 431px;
+}
+
+#section-7 > p:nth-child(3) > button {
+    height: 41px;
+    width: 81px;
+    background-color: #707278;
+    border: 0;
+    color: white;
+}
+
+#section-7 > ul {
+    list-style: none;
+    top: 180px;
+    position: relative;
+}
+
+#section-7 > ul > li {
+    display: inline-block;
+    margin: 10px;
+}
+
+footer {
+    height: 58px;
+    background-color: #2f3039;
+    position: relative;
+}
+
+footer > p {
+    color: #ffffff;
+    font: 400 12px / 22.794px normal;
+    position: absolute;
+    top: 25px;
+    left: 40px;
+}
+
+footer > a {
+    color: #ffffff;
+    font: 400 12px normal;
+    text-decoration: none;
+    position: absolute;
+    top: 25px;
+    right: 40px;
+}
