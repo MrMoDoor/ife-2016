@@ -14,14 +14,17 @@
 		currentPosition = { // 当前位置
 			x: 4,
 			y: 4
-		};
-	var board = new Array(10);
+		},
+		board = new Array(10),
+		virtualBoard = new Array(10); // 用于寻路算法的时候方便
 	
-	// 初始化棋盘
+	// 初始化棋盘 以及 寻路算法方便的“虚拟盘”
 	for (var r = 0; r < 10; r++) {
 		board[r] = [];
+		virtualBoard[r] = [];
 		for (var c = 0; c < 10; c++) {
 			board[r][c] = 0;
+			virtualBoard[r][c] = 0;
 		}
 	}
 
@@ -104,6 +107,9 @@
 				if (start) {
 					doCmd({type:infos[0],dir:infos[1],step:parseInt(infos[2], 10)});		
 				}
+			} else
+			if (infos.length === 3 && (infos[0].toLowerCase() === "mov" && infos[1].toLowerCase() === "to") && infos[2].match(/[1-10]+,[1-10]$/)) {
+				console.log("right");
 			} else
 			// 命令属于两个字符的
 			if (infos.length === 2) {
@@ -277,6 +283,105 @@
 		}
 	}
 	
+	// movto函数 返回一个数组
+	function movTo(aimX, aimY){
+		aimX = 1;
+		aimY = 1;
+		for (var x = 0; x < 10; x++) {
+			for (var y = 0; y < 10; y++) {
+				if(board[x][y] === 2) {
+					virtualBoard[x][y] = "wall";
+				}
+			}
+		}
+		virtualBoard[1][3] = 11;
+		// 下上右左
+		var offset = [{x:0, y:1}, {x:0, y:-1}, 
+					  {x:1, y:0}, {x:-1, y:0}];
+		var queue = [];
+		var collection = [];
+		var current = {
+			x: currentPosition.x - 1,
+			y: currentPosition.y - 1
+		};
+		var temp = {
+			x: undefined,
+			y: undefined
+		};
+		queue.push(current);
+		virtualBoard[current.x][current.y] = 1;
+		while(true) {
+			for (var i = 0; i < 4; i++) {
+				temp.x = current.x + offset[i].x;
+				temp.y = current.y + offset[i].y;
+				if (temp.x === aimX && temp.y === aimY) {
+					virtualBoard[aimX][aimY] = virtualBoard[current.x][current.y] + 1;
+					break;
+				} else if (virtualBoard[temp.x][temp.y] === 0) {
+					virtualBoard[temp.x][temp.y] = virtualBoard[current.x][current.y] + 1;
+					queue.push({x:temp.x, y:temp.y});
+				}
+			}
+			
+			// 已经找到了目标
+			if (temp.x === aimX && temp.y === aimY) {
+				break;
+			}
+			
+			// 队列已空
+			if (!queue[0]) {
+				alert("Can't find a way!");
+				return 0;
+			}
+			
+			// 取队头
+			current = queue[0];
+			queue.shift();
+		}
+		
+		var temp = {
+			x: undefined,
+			y: undefined
+		};
+		var current = {
+			x: aimX,
+			y: aimY
+		};
+		var finish = virtualBoard[aimX][aimY];
+		for (var n = finish - 1; n > 0; n--) {
+			for (var m = 0; m < 4; m++) {
+				temp.x = current.x + offset[m].x;
+				temp.y = current.y + offset[m].y;
+				if (virtualBoard[temp.x][temp.y] === n) {
+					current.x = temp.x;
+					current.y = temp.y;
+					console.log(current.x, current.y)
+					switch(m) {
+						case 0:
+							collection.push("top");
+							break;
+						case 1:
+							collection.push("bot");
+							break;
+						case 2:
+							collection.push("lef");
+							break;
+						case 3:
+							collection.push("rig");
+							break;
+						default:
+							return "error";
+					}
+				}
+			}
+		}
+		for (var xx = 0; xx < 10; xx++) {
+			console.log(virtualBoard[xx]);
+		}
+		console.log(collection);
+		//return collection;
+	}
+	
 	// go和tun的辅助函数
 	function goOrTra(drc) {
 		var dis = 0, 
@@ -407,6 +512,7 @@
 	
 	// 随机建设墙壁
 	buildBtn.onclick = function() {
+		/*
 		var xRandom = Math.floor(Math.random()*10);
 		var yRandom = Math.floor(Math.random()*10);
 		while((currentPosition.x === xRandom && currentPosition.y === yRandom)
@@ -416,7 +522,8 @@
 		}
 		board[xRandom][yRandom] = 1;
 		freshBoard();
-		console.log(xRandom, yRandom);
+		console.log(xRandom, yRandom);*/
+		movTo();
 	};
 	
 	//btn的handler
