@@ -1,3 +1,5 @@
+// 写于2016/4/15
+
 (function(){
 	var textarea = document.getElementsByTagName("textarea")[0],
 		square = document.getElementById("square"),
@@ -5,17 +7,15 @@
 		lis = ul.getElementsByTagName("li"),
 	    btn = document.getElementsByTagName("button")[0],
 		buildBtn = document.getElementsByTagName("button")[1], 
-	    direction = "top",
-	    start = false,
-		rotateDegs = 0, // 旋转 
-		allCmds = [],
+	    direction = "top", // 小方块的方向所在
+	    start = false, // 用作开关
+		rotateDegs = 0, // 旋转角度
 		timers = 1,
-	    linesCount = 0,
 		currentPosition = { // 当前位置
-			x: 4,
-			y: 4
+			row: 4,
+			col: 4
 		},
-		board = new Array(10),
+		board = new Array(10), // 棋盘
 		virtualBoard = new Array(10); // 用于寻路算法的时候方便
 	
 	// 初始化棋盘 以及 寻路算法方便的“虚拟盘”
@@ -55,7 +55,7 @@
 		content = "";
 	}
 	
-	// 刷新方块的旋转角度
+	// 刷新方块的旋转角度，控制在几个特殊角度之内。
 	function freshDeg() {
 		while(rotateDegs > 360) {
 			rotateDegs -= 360;
@@ -79,8 +79,8 @@
 		var table = document.getElementsByTagName("table")[0];
 		for (var i = 0; i < 10; i++) {
 			for (var j = 0; j < 10; j++) {
-				if (board[i][j] === 1) {
-					var po = table.getElementsByTagName("tr")[j + 1].getElementsByTagName("td")[i + 1];
+				if (board[i][j] === 1) { 
+					var po = table.getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[j + 1];
 					po.style.backgroundColor = "#E4E4E4";
 					board[i][j] = 2;
 				}
@@ -88,6 +88,7 @@
 		}
 	}
 	
+	// 命令处理函数
 	function handling(cmds) {
 		var c = 1;
 		for (var i = 0, len = cmds.length; i < len; i++) {
@@ -99,8 +100,8 @@
 					infos[k] = "What?";
 				}
 			}
-			console.log(infos);
 			// 命令属于三个字符的
+			// 处理tra和mov
 			if (infos.length === 3 && (infos[0].toLowerCase() in {"mov":undefined, "tun":undefined, 							"tra":undefined})
 			   					   && (infos[1].toLowerCase() in {"lef":undefined, "rig":undefined, 	"top":undefined, "bot":undefined})
 			   					   && !isNaN(Number(infos[2]))) {
@@ -108,10 +109,26 @@
 					doCmd({type:infos[0],dir:infos[1],step:parseInt(infos[2], 10)});		
 				}
 			} else
-			if (infos.length === 3 && (infos[0].toLowerCase() === "mov" && infos[1].toLowerCase() === "to") && infos[2].match(/[1-10]+,[1-10]$/)) {
-				console.log("right");
+			// 处理movto
+			if (infos.length === 3 && (infos[0].toLowerCase() === "mov" && infos[1].toLowerCase() === "to") && infos[2].match(/^([0-9]{1,2},{1}[0-9]{1,2})$/)) {
+				axis = infos[2].split(",");
+				axis[0] = Number(axis[0], 10);
+				axis[1] = Number(axis[1], 10);
+				if (axis[0] <= 10 && axis[0] >= 1 
+				 && axis[1] <= 10 && axis[1] >= 1
+				 && board[axis[0] - 1][axis[1] - 1] != 2 
+				 && (axis[0] != currentPosition.col 
+				 || axis[1] != currentPosition.row)) {
+					var findThePath = movTo(axis[1] - 1 ,axis[0] - 1);
+					if (start) {
+						for (var ftp = 0, lenFtp = findThePath.length; ftp < lenFtp; ftp++) {
+							doCmd({type:"mov",dir:findThePath[ftp],step:1});
+						}
+					}
+				}
 			} else
 			// 命令属于两个字符的
+			// 处理bru，go和mov与tra的默认情况
 			if (infos.length === 2) {
 				if ((infos[0].toLowerCase() in {"mov":undefined, "tun":undefined, 							"tra":undefined})
 			     && (infos[1].toLowerCase() in {"lef":undefined, "rig":undefined, 	"top":undefined, "bot":undefined}) ) {
@@ -132,6 +149,7 @@
 				}
 			} else 
 			// 命令属于一个字符的
+			// 处理build和go的情况
 			if (infos.length === 1 && infos[0].toLowerCase() === "go") {
 				if (start) {
 					doCmd({type:infos[0],dir:undefined,step:1 });
@@ -149,21 +167,8 @@
 		}
 		c = 1;
 	}
-	
-	// 返回行数目
-	function linesCounts() {
-		if(start) {
-			if (textarea.value.match(/\n/g)) {
-				return textarea.value.match(/\n/g).length;
-			} else {
-				return 0;
-			}
-		} else {
-			return 0;
-		}
-	}
 
-	// 对传入命令（单行）进行分析，选择对应的事件
+	// 对传入命令（单行）进行分析，选择对应的事件（movto除外）
 	function doCmd({type:type, dir:dir, step:step}){
 		for (var i = 0; i < step; i++) {
 			setTimeout(function(){
@@ -236,21 +241,21 @@
 	
 	// build 
 	function build() {
-		if (direction === "rig" && currentPosition.y <= 10 &&
-			board[currentPosition.x][currentPosition.y - 1] != 2) {
-			board[currentPosition.x][currentPosition.y - 1] = 1;
+		if (direction === "rig" && currentPosition.col <= 10 &&
+				board[currentPosition.row - 1][currentPosition.col] != 2) {
+			board[currentPosition.row - 1][currentPosition.col] = 1;
 			freshBoard();
-		} else if (direction === "lef" && currentPosition.y - 1 >= 1 &&
-				  board[currentPosition.x - 2][currentPosition.y - 1] != 2) {
-			board[currentPosition.x - 2][currentPosition.y - 1] = 1;
+		} else if (direction === "lef" && currentPosition.col >= 0 &&
+				board[currentPosition.row - 1][currentPosition.col - 2] != 2) {
+			board[currentPosition.row - 1][currentPosition.col - 2] = 1;
 			freshBoard();
-		} else if (direction === "top" && currentPosition.x <= 10 &&
-				  board[currentPosition.x - 1][currentPosition.y - 2] != 2) {
-			board[currentPosition.x - 1][currentPosition.y - 2] = 1;
+		} else if (direction === "top" && currentPosition.row <= 10 &&
+				  board[currentPosition.row - 2][currentPosition.col - 1] != 2) {
+			board[currentPosition.row - 2][currentPosition.col - 1] = 1;
 			freshBoard();
-		} else if (direction === "bot" && currentPosition.x - 1 >= 1 && 
-				  board[currentPosition.x - 1][currentPosition.y] != 2) {
-			board[currentPosition.x - 1][currentPosition.y] = 1;
+		} else if (direction === "bot" && currentPosition.row >= 0 && 
+				  board[currentPosition.row][currentPosition.col - 1] != 2) {
+			board[currentPosition.row][currentPosition.col - 1] = 1;
 			freshBoard();
 		} else {
 			console.log("Building fail!");
@@ -259,34 +264,36 @@
 	
 	// bru
 	function bru(dir) {
-		var x,y,
+		var row,col,
 			table = document.getElementsByTagName("table")[0];
-		if (direction === "lef" && board[currentPosition.x - 2][currentPosition.y - 1] === 2) {
-			x = currentPosition.x;
-			y = currentPosition.y - 1;
-		} else if (direction === "rig" && board[currentPosition.x][currentPosition.y - 1] === 2) {
-			x = currentPosition.x;
-			y = currentPosition.y + 1;
-		} else if (direction === "top" && board[currentPosition.x - 1][currentPosition.y - 2] === 2) {
-			x = currentPosition.x - 1;
-			y = currentPosition.y;
-		} else if (direction === "bot" && board[currentPosition.x - 1][currentPosition.y] === 2) {
-			x = currentPosition.x + 1;
-			y = currentPosition.y;
+		if (direction === "lef" && board[currentPosition.row - 1][currentPosition.col - 2] === 2) {
+			row = currentPosition.row;
+			col = currentPosition.col - 1;
+		} else if (direction === "rig" && board[currentPosition.row - 1][currentPosition.col] === 2) {
+			row = currentPosition.row;
+			col = currentPosition.col + 1;
+		} else if (direction === "top" && board[currentPosition.row - 2][currentPosition.col - 1] === 2) {
+			row = currentPosition.row - 1;
+			col = currentPosition.col;
+		} else if (direction === "bot" && board[currentPosition.row][currentPosition.col - 1] === 2) {
+			row = currentPosition.row + 1;
+			col = currentPosition.col;
 		}
 		// 染色
-		if (!isNaN(x) && !isNaN(y)) {
-			var wallShouldBeColored = table.getElementsByTagName("tr")[x].getElementsByTagName("td")[y];
+		if (!isNaN(row) && !isNaN(col)) {
+			var wallShouldBeColored = table.getElementsByTagName("tr")[row].getElementsByTagName("td")[col];
 			wallShouldBeColored.style.backgroundColor = dir;
-			x = undefined;
-			y = undefined;
+			row = undefined;
+			col = undefined;
+		} else {
+			console.log("There is no wall!");
 		}
 	}
 	
 	// movto函数 返回一个数组
-	function movTo(aimX, aimY){
-		aimX = 1;
-		aimY = 1;
+	// 用了广度优先搜索
+	function movTo(aimRow, aimCol){
+		console.log("movTo");
 		for (var x = 0; x < 10; x++) {
 			for (var y = 0; y < 10; y++) {
 				if(board[x][y] === 2) {
@@ -294,43 +301,47 @@
 				}
 			}
 		}
-		virtualBoard[1][3] = 11;
-		// 下上右左
-		var offset = [{x:0, y:1}, {x:0, y:-1}, 
-					  {x:1, y:0}, {x:-1, y:0}];
+		// 右，左，上，下
+		var offset = [{row:0, col:1}, {row:0, col:-1}, 
+					  {row:1, col:0}, {row:-1, col:0}];
 		var queue = [];
 		var collection = [];
 		var current = {
-			x: currentPosition.x - 1,
-			y: currentPosition.y - 1
+			row: currentPosition.row - 1,
+			col: currentPosition.col - 1
 		};
 		var temp = {
-			x: undefined,
-			y: undefined
+			row: undefined,
+			col: undefined
 		};
 		queue.push(current);
-		virtualBoard[current.x][current.y] = 1;
+		virtualBoard[current.row][current.col] = 1;
+		// 通过不断“辐射”来到达目标位置，在visualBoard上写上标号。
 		while(true) {
 			for (var i = 0; i < 4; i++) {
-				temp.x = current.x + offset[i].x;
-				temp.y = current.y + offset[i].y;
-				if (temp.x === aimX && temp.y === aimY) {
-					virtualBoard[aimX][aimY] = virtualBoard[current.x][current.y] + 1;
+				temp.row = current.row + offset[i].row;
+				temp.col = current.col + offset[i].col;
+				if (temp.col === aimCol && temp.row === aimRow) {
+					virtualBoard[aimRow][aimCol] = virtualBoard[current.row][current.col] + 1;
 					break;
-				} else if (virtualBoard[temp.x][temp.y] === 0) {
-					virtualBoard[temp.x][temp.y] = virtualBoard[current.x][current.y] + 1;
-					queue.push({x:temp.x, y:temp.y});
+				} else if (virtualBoard != undefined && virtualBoard[temp.row] != undefined && virtualBoard[temp.row][temp.col] != undefined && virtualBoard[temp.row][temp.col] != "wall") {
+					// 这里判断是以免触及到边缘或者墙壁产生超越数组的元素
+					if (virtualBoard[temp.row][temp.col] === 0) {
+						virtualBoard[temp.row][temp.col] = virtualBoard[current.row][current.col] + 1;
+						queue.push({row:temp.row, col:temp.col});
+					}
 				}
 			}
 			
 			// 已经找到了目标
-			if (temp.x === aimX && temp.y === aimY) {
+			if (temp.col === aimCol && temp.row === aimRow) {
 				break;
 			}
 			
 			// 队列已空
 			if (!queue[0]) {
 				alert("Can't find a way!");
+				initMovTo();
 				return 0;
 			}
 			
@@ -340,53 +351,66 @@
 		}
 		
 		var temp = {
-			x: undefined,
-			y: undefined
+			row: undefined,
+			col: undefined
 		};
 		var current = {
-			x: aimX,
-			y: aimY
+			row: aimRow,
+			col: aimCol
 		};
-		var finish = virtualBoard[aimX][aimY];
+		var finish = virtualBoard[aimRow][aimCol];
+		// 用过在visualBoard上的标号寻找路线。
 		for (var n = finish - 1; n > 0; n--) {
 			for (var m = 0; m < 4; m++) {
-				temp.x = current.x + offset[m].x;
-				temp.y = current.y + offset[m].y;
-				if (virtualBoard[temp.x][temp.y] === n) {
-					current.x = temp.x;
-					current.y = temp.y;
-					console.log(current.x, current.y)
-					switch(m) {
-						case 0:
-							collection.push("top");
-							break;
-						case 1:
-							collection.push("bot");
-							break;
-						case 2:
-							collection.push("lef");
-							break;
-						case 3:
-							collection.push("rig");
-							break;
-						default:
-							return "error";
+				temp.row = current.row + offset[m].row;
+				temp.col = current.col + offset[m].col;
+				if (virtualBoard[temp.row] != undefined && virtualBoard[temp.row][temp.col] != undefined && virtualBoard[temp.row][temp.col] === n) {
+					if (current.row - temp.row === 1) {
+						collection.push("bot");
+					} else if (current.row - temp.row === -1) {
+						collection.push("top");
+					} else if (current.col - temp.col === 1) {
+						collection.push("rig");
+					} else if (current.col - temp.col === -1) {
+						collection.push("lef");
 					}
+					current.row = temp.row;
+					current.col = temp.col;
+					//console.log(current.row + 1, current.col + 1)
 				}
 			}
 		}
+		/*
 		for (var xx = 0; xx < 10; xx++) {
 			console.log(virtualBoard[xx]);
 		}
-		console.log(collection);
-		//return collection;
+		
+		for (var yy = 0; yy < 10; yy++) {
+			console.log(board[yy]);
+		}
+		*/
+		collection = collection.reverse();
+		// console.log(collection);
+		
+		initMovTo();
+		
+		return collection;
+	}
+	
+	// 把virtualBoard初始化
+	function initMovTo() {
+		for (var x = 0; x < 10; x++) {
+			for (var y = 0; y < 10; y++) {
+				virtualBoard[x][y] = 0;
+			}
+		}
 	}
 	
 	// go和tun的辅助函数
 	function goOrTra(drc) {
 		var dis = 0, 
 			dir = "", 
-			identify = "pass"; 
+			identify = "pass";
 		switch(drc) {
 			case "lef":
 				dis = -40;
@@ -395,11 +419,11 @@
 				if (parseInt(square.style.left,10) <= 60) {
 					identify = "Out of range";
 					square.style.left = 60 + "px";
-				} if (board[currentPosition.x - 2][currentPosition.y - 1] == 2) {
-					identify = "There is a wall"; // 前面有一堵墙
+				} if (board[currentPosition.row - 1][currentPosition.col - 2] == 2) {
+					identify = "There is a wall on the left"; // 前面有一堵墙
 				} 
 				else {
-					currentPosition.x--; // 更新坐标位置
+					currentPosition.col--; // 更新坐标位置
 				}
 				break;
 			case "rig":
@@ -407,13 +431,13 @@
 				dir = "left";
 				// 判断是否出界了
 				if (parseInt(square.style.left,10) > 380) {
-					identify = false;
+					identify = "Out of range";
 					square.style.left = 420 + "px";
-				} else if (board[currentPosition.x][currentPosition.y - 1] == 2) {
-					identify = "There is a wall"; // 前面有一堵墙
+				} else if (board[currentPosition.row - 1][currentPosition.col] == 2) {
+					identify = "There is a wall on the right"; // 前面有一堵墙
 				}  
 				else {
-					currentPosition.x++; // 更新坐标位置					
+					currentPosition.col++; // 更新坐标位置					
 				}
 				break;
 			case "top":
@@ -421,13 +445,13 @@
 				dir = "top";
 				// 判断是否出界了
 				if (parseInt(square.style.top,10) <= 60) {
-					identify = false;
+					identify = "Out of range";
 					square.style.top = 60 + "px";
-				} else if (board[currentPosition.x - 1][currentPosition.y - 2] == 2) {
-					identify = "There is a wall"; // 前面有一堵墙
+				} else if (board[currentPosition.row - 2][currentPosition.col - 1] === 2) {
+					identify = "There is a wall on the top"; // 前面有一堵墙
 				} 
 				else {
-					currentPosition.y--; // 更新坐标位置
+					currentPosition.row--; // 更新坐标位置
 				}
 				break;
 			case "bot":
@@ -435,13 +459,13 @@
 				dir = "top";
 				// 判断是否出界了
 				if (parseInt(square.style.top,10) > 380) {
-					identify = false;
+					identify = "Out of range";
 					square.style.top = 420 + "px";
-				} else if (board[currentPosition.x - 1][currentPosition.y] == 2) {
-					identify = "There is a wall"; // 前面有一堵墙
+				} else if (board[currentPosition.row][currentPosition.col - 1] === 2) {
+					identify = "There is a wall on the bot"; // 前面有一堵墙
 				} 
 				else {
-					currentPosition.y++; // 更新坐标位置
+					currentPosition.row++; // 更新坐标位置
 				}
 				break;
 			default:
@@ -512,18 +536,21 @@
 	
 	// 随机建设墙壁
 	buildBtn.onclick = function() {
-		/*
-		var xRandom = Math.floor(Math.random()*10);
-		var yRandom = Math.floor(Math.random()*10);
-		while((currentPosition.x === xRandom && currentPosition.y === yRandom)
-			 || board[xRandom][yRandom] === 2) {
-		    xRandom = Math.floor(Math.random()*10);
-			yRandom = Math.floor(Math.random()*10);
+		var rowRandom = Math.floor(Math.random()*10);
+		var colRandom = Math.floor(Math.random()*10);
+		while((currentPosition.row - 1 === rowRandom && currentPosition.col - 1 === colRandom)
+			 || board[rowRandom][colRandom] === 2) {
+		    rowRandom = Math.floor(Math.random()*10);
+			colRandom = Math.floor(Math.random()*10);
 		}
-		board[xRandom][yRandom] = 1;
+		board[rowRandom][colRandom] = 1;
 		freshBoard();
-		console.log(xRandom, yRandom);*/
-		movTo();
+		/*
+		for (var i = 0; i < 10; i++) {
+			console.log(board[i]);
+		}
+		*/
+		//movTo();
 	};
 	
 	//btn的handler
@@ -562,9 +589,10 @@
 			start = false;
 		}
 	},0);
-	
+	/*
 	setInterval(function(){
 		console.log(direction);
+		console.log(currentPosition);
 	},1000)
-	
+	*/
 })();

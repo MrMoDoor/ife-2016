@@ -16,6 +16,10 @@ body {
 	position: relative;
 }
 
+.container p {
+	width: 100%;
+}
+
 table {
 	border-collapse: collapse;
 	text-align: center;
