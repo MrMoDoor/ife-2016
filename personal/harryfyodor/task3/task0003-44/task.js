@@ -70,7 +70,7 @@
 					var nPic = document.createElement("div");
 					nPic.setAttribute("class", "picture");
 					var nImg = document.createElement("img");
-					nImg.src = "images/" + data.imgs[i]["src"];
+					nImg.src = "img/" + data.imgs[i]["src"];
 					nImg.alt = "img";
 					var nDes = document.createElement("div");
 					nDes.setAttribute("class", "description");

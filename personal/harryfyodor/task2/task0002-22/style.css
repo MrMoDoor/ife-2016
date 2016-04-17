@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	width: 960px;
+}
+
+#main {
+	height: 100px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#main div {
+	border: 1px solid #B82525;
+	padding: 15px;
+	display: inline-block;
+	background-color: white;
+}
+
+.lef {
+	width: 40px;
+	background-color: white;
+}
+
+#btn-group {
+	text-align: center;
+	margin-top: 50px;
+}
+
+button {
+	padding: 10px;
+}
