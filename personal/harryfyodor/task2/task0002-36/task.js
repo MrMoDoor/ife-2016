@@ -102,7 +102,7 @@
 			}
 			// 命令属于三个字符的
 			// 处理tra和mov
-			if (infos.length === 3 && (infos[0].toLowerCase() in {"mov":undefined, "tun":undefined, 							"tra":undefined})
+			if (infos.length === 3 && (infos[0].toLowerCase() in {"mov":undefined, "tun":undefined, 	"tra":undefined})
 			   					   && (infos[1].toLowerCase() in {"lef":undefined, "rig":undefined, 	"top":undefined, "bot":undefined})
 			   					   && !isNaN(Number(infos[2]))) {
 				if (start) {
@@ -120,6 +120,10 @@
 				 && (axis[0] != currentPosition.col 
 				 || axis[1] != currentPosition.row)) {
 					var findThePath = movTo(axis[1] - 1 ,axis[0] - 1);
+					if (findThePath != 0) {
+						currentPosition.row = axis[1];
+						currentPosition.col = axis[0];
+					}
 					if (start) {
 						for (var ftp = 0, lenFtp = findThePath.length; ftp < lenFtp; ftp++) {
 							doCmd({type:"mov",dir:findThePath[ftp],step:1});
@@ -185,6 +189,7 @@
 				} else if (type === "bru") {
 					bru(dir);
 				}
+				freshDeg();
 			},1200*timers);
 			timers++;
 		}
@@ -380,7 +385,7 @@
 				}
 			}
 		}
-		/*
+		
 		for (var xx = 0; xx < 10; xx++) {
 			console.log(virtualBoard[xx]);
 		}
@@ -388,7 +393,7 @@
 		for (var yy = 0; yy < 10; yy++) {
 			console.log(board[yy]);
 		}
-		*/
+		  
 		collection = collection.reverse();
 		// console.log(collection);
 		
@@ -545,16 +550,12 @@
 		}
 		board[rowRandom][colRandom] = 1;
 		freshBoard();
-		/*
-		for (var i = 0; i < 10; i++) {
-			console.log(board[i]);
-		}
-		*/
-		//movTo();
+
 	};
 	
 	//btn的handler
 	function btnHandler() {
+		timers = 1;
 		var hasError = false;
 		start = true;
 		for (var i = 0, len = lis.length; i < len; i++) {
@@ -581,18 +582,5 @@
 		}	
 	}
 
-	// 异步刷新deg值
-	setInterval(function(){
-		freshDeg();
-		if (linesCount == 0) {
-			timers = 0;
-			start = false;
-		}
-	},0);
-	/*
-	setInterval(function(){
-		console.log(direction);
-		console.log(currentPosition);
-	},1000)
-	*/
+	
 })();
