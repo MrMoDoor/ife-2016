@@ -1,0 +1,131 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft YaHei";
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	position: relative;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+.container button {
+	padding: 5px 10px;
+	font-size: 18px;
+	background-color: #649EF1;
+	color: white;
+	cursor: pointer;
+	border: 1px solid #649EF1;
+	border-radius: 3px;
+	position: absolute;
+	top: 30px;
+}
+
+.container p {
+	position: absolute;
+	top: 80px;
+}
+
+button:hover {
+	box-shadow: 0 0 5px #649EF1;
+}
+
+.darken {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.darken>div:first-child {
+	width: 100%;
+	height: 100%;
+	opacity: 0.7;
+	background-color: black;
+	
+}
+
+.floatOut {
+	position: absolute;
+	background-color: white;
+	top: 0;
+	width: 400px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 8px;
+	box-shadow: 0 0 10px white;
+}
+
+.floatOut>div:first-child {
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	background-color: #649EF1;
+	border-radius: 8px 8px 0 0;
+	color: whitesmoke;
+	line-height: 60px;
+	padding-left: 30px;
+}
+
+.floatOut>div:last-child {
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	background-color: #649EF1;
+	bottom: 0;
+	border-radius: 0 0 8px 8px;
+}
+
+.floatOut>div:nth-child(2) {
+	margin: 80px 16px 0px 16px;
+	margin-bottom: 80px;
+}
+
+.floatOut>div:last-child button {
+	margin-top: 15px;
+	margin-left: 30px;
+	width: 50px;
+	height: 30px;
+	background-color: white;
+	color: #016DBA;
+	border-radius: 3px;
+	border: 1px solid #649EF1;
+}
+
+.floatOut>div:last-child button:hover {
+	box-shadow: 0 0 5px white;
+	cursor: pointer;
+}
+
+.floatOut input {
+	margin-top: 15px;
+	width: 200px;
+	height: 30px;
+	border: 1px solid #649EF1;
+	border-radius: 3px;
+}
+
+.floatOut input:focus {
+	box-shadow: 0 0 5px #649EF1;
+}
+
+.show {
+	animation: myShow 1s;
+}
+
+@keyframes myShow
+{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

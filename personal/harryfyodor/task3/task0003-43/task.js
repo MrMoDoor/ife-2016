@@ -68,4 +68,5 @@ var placing = (function(){
 	
 	init();
 	loadFirstImg();
+	
 })();
