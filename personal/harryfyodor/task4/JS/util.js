@@ -233,19 +233,37 @@ function delegateEvent(element, tag, eventName, listener) {
 	})
 }
 
-// 通过id在数组里找对象
-function findObjectById(anArray, aId) {
-	var ObjectIneed;
+// 通过type在数组里找对象
+function findObjectBy(type, anArray, target) {
+	var objectIneed = [];
+	var position = [];
 	for (var i = 0; i < anArray.length; i++) {
-		if (anArray[i].id === aId) {
-			ObjectIneed = anArray[i];
+		if (anArray[i][type] === target) {
+			objectIneed.push(anArray[i]);
+			position.push(i);
 		}
 	}
-	if (!ObjectIneed) {
-		ObjectIneed = null;
+	
+	return {
+		objectIneed: objectIneed,
+		position: position
 	}
-	return ObjectIneed;
 }
+
+// 数组id去重， 逆向相减以免length改变的影响
+function unique(arr) {
+	var len = arr.length;
+	for (var i = len - 2; i > 0; i--) {
+		var item = arr[i].id;
+		for (var j = i + 1; j < arr.length; j++) {
+			if (item === arr[j].id) {
+				arr.splice(j, 1);
+			}
+		}
+	}
+	return arr;
+}
+
 
 // 简化的常用方法
 $.on = addEvent;
@@ -256,7 +274,8 @@ $.delegate = delegateEvent;
 
 $.EventUtil = EventUtil;
 $.cloneObject = cloneObject;
-$.findObjectById = findObjectById;
+$.findObjectBy = findObjectBy;
+$.unique = unique;
 
 return {
     U : $      

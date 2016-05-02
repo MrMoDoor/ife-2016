@@ -2,7 +2,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Microsoft YaHei";
+  font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Arial, sans-serif;
   box-sizing: border-box; }
 
 body, html {
@@ -267,6 +267,7 @@ header {
     transform: translate(-50%, -50%); }
 
 #new-build-qn-head {
+  position: relative;
   border-bottom: 2px solid #CCCCCC;
   width: 1000px;
   margin-left: auto;
@@ -282,6 +283,13 @@ header {
   #new-build-qn-head h3:hover {
     background-color: #FCF0E5;
     cursor: pointer; }
+  #new-build-qn-head input {
+    position: absolute;
+    height: 30px;
+    width: 150px;
+    top: 30px;
+    left: 405px;
+    border: none; }
 
 #new-build-btns {
   width: 960px;
@@ -292,16 +300,14 @@ header {
   text-align: center;
   border: 2px solid #CBCBCB;
   position: relative; }
-  #new-build-btns div:first-child {
-    padding: 20px; }
-    #new-build-btns div:first-child button {
-      border: 1px solid #CBCBCB;
-      background-color: #EFEFEF;
-      width: 70px;
-      height: 30px;
-      margin: 0 10px; }
-      #new-build-btns div:first-child button:hover {
-        box-shadow: 0 0 3px gray; }
+  #new-build-btns div:first-child button {
+    border: 1px solid #CBCBCB;
+    background-color: #EFEFEF;
+    width: 70px;
+    height: 30px;
+    margin: 20px 10px; }
+    #new-build-btns div:first-child button:hover {
+      box-shadow: 0 0 3px gray; }
   #new-build-btns div:last-child {
     width: 100%;
     background-color: #EFEFEF;
@@ -322,7 +328,8 @@ header {
   #new-build-qn-foot input {
     height: 30px;
     width: 170px;
-    margin-left: 10px; }
+    margin-left: 10px;
+    padding-left: 6px; }
   #new-build-qn-foot button {
     width: 100px;
     float: right;
@@ -372,9 +379,10 @@ header {
   top: 15px; }
 
 .darken {
-  width: 100%; }
+  width: 100%;
+  height: 100%;
+  position: absolute; }
   .darken > div:first-child {
-    top: 0;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -383,7 +391,6 @@ header {
   .darken .float-out {
     position: absolute;
     background-color: white;
-    top: 0;
     top: 50%;
     left: 50%;
     width: 400px;
@@ -412,14 +419,15 @@ header {
       .darken .float-out > div:nth-child(2) label:last-child {
         margin-left: 28px; }
       .darken .float-out > div:nth-child(2) input {
-        margin-top: 16px;
+        margin-top: 17px;
         margin-left: 15px; }
     .darken .float-out > div:nth-child(3) {
       width: 100%;
       text-align: center;
       margin-bottom: 15px; }
       .darken .float-out > div:nth-child(3) > button:first-child {
-        width: 70px; }
+        width: 70px;
+        margin-right: 15px; }
       .darken .float-out > div:nth-child(3) > button:last-child {
         width: 70px; }
 

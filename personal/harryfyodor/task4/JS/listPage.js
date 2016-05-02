@@ -10,8 +10,7 @@ define([
     'use strict';
     var listPage = function() {
         refresh();
-        btnEvent();
-        delEvent();
+        delAndAdd();
     };
     
     // 渲染页面
@@ -55,22 +54,132 @@ define([
 
         main.innerHTML = ihtml;
         btnEvent();
+        delAndAdd();
     }
     
     // 绑定右边按钮的事件
     var btnEvent = function() {
         var listItems = document.getElementById("list-page-body").childNodes;
+        var allQns = Storage.getData().qn;
+        var allTextareas = Storage.getData().textarea;
+        var allCheckboxs = Storage.getData().checkbox;
+        var allRadios = Storage.getData().radio;
+        
         for (var i = 0, len = listItems.length; i < len; i++) {
-            var btn1 = listItems[i].getElementsByTagName("button")[0];
-            var btn2 = listItems[i].getElementsByTagName("button")[1];
-            var btn3 = listItems[i].getElementsByTagName("button")[2];
-            $.U.on(btn1, )
+            (function(i) {
+                var btn1 = listItems[i].getElementsByTagName("button")[0];
+                var btn2 = listItems[i].getElementsByTagName("button")[1];
+                var btn3 = listItems[i].getElementsByTagName("button")[2];
+                var title = listItems[i].getElementsByTagName("span")[0].innerHTML;
+                // 在存储里找到该位置
+                var obj = $.U.findObjectBy("title", allQns ,title);
+                // 编辑按钮
+                $.U.click(btn1, function() {
+                    var newEdit = new Edit.edit(obj.position[0]);
+                });
+                // 删除按钮
+                $.U.click(btn2, function() {
+                    var newDarken = new Darken.out({
+                        type: "confirm", 
+                        title: "删除提示", 
+                        content: "是否要删除" + title + "?", 
+                        callback: function() {
+                            deleteQn(obj.position[0], i);
+                        }
+                    }); 
+                });
+                // 查看问卷
+                $.U.click(btn3, function() {
+                    
+                });
+            })(i);
         }
     }
     
-    // 绑定下面删除按钮的事件逻辑和上面的新建逻辑
-    var delEvent = function() {
+    // 删除逻辑
+    var deleteQn = function(position, i) {
+        var allQns = Storage.getData().qn;
+        var allTextareas = Storage.getData().textarea;
+        var allCheckboxs = Storage.getData().checkbox;
+        var allRadios = Storage.getData().radio;
+        var textareaShouldDel = allQns[position].textarea;
+        var checkboxShouldDel = allQns[position].checkbox;
+        var radioShouldDel = allQns[position].radio;
+        var listItems = document.getElementById("list-page-body").childNodes;
+        // 先删除dom节点
+        listItems[i].parentNode.removeChild(listItems[i]);
         
+        console.log(position)
+        console.log(textareaShouldDel, checkboxShouldDel, radioShouldDel)
+        console.log($.U.findObjectBy("id", allTextareas, 2))
+        console.log(allTextareas)
+        // 删除所有问卷中的textarea
+        for (var i1 = 0; i1 < textareaShouldDel.length; i1++) {
+            allTextareas.splice($.U.findObjectBy("id", allTextareas, textareaShouldDel[i1]).position[0], 1);
+        }
+        
+        // 删除所有问卷中的checkbox
+        for (var i2 = 0; i2 < checkboxShouldDel.length; i2++) {
+            allCheckboxs.splice($.U.findObjectBy("id", allCheckboxs, checkboxShouldDel[i2]).position[0], 1);
+        }
+        // 删除所有问卷中的radio
+        for (var i3 = 0; i3 < radioShouldDel.length; i3++) {
+            allRadios.splice($.U.findObjectBy("id", allRadios, radioShouldDel[i3]).position[0], 1);
+        }
+        allQns.splice(position, 1);
+        Storage.save({
+            qn : allQns,
+            textarea : allTextareas,
+            checkbox : allCheckboxs,
+            radio : allRadios
+        });
+    }
+    
+    // 绑定下面删除按钮的事件逻辑和上面的新建逻辑
+    var delAndAdd = function() {
+        var delBtn = $.U("#list-page-foot button");
+        var addBtn = $.U("#list-page-head button");
+        var main = $.U("#main");
+        var allQns = Storage.getData().qn;
+        var listItems = document.getElementById("list-page-body").childNodes;
+        // 选择框
+        var choose = main.getElementsByTagName("input");
+        var chooseAll = choose[choose.length - 1];
+        // 绑定大删除按钮
+        $.U.click(delBtn, function() {
+            // 每点击一次都要重新刷新一下
+            var chooseLen = main.getElementsByTagName("input").length;
+            allQns = Storage.getData().qn;
+            console.log(chooseLen)
+            for (var i = chooseLen - 2; i >= 0; i--) {
+                // 用倒序循环的方式防止len的变化
+                (function(i) {
+                    if(choose[i].checked === true) {
+                        var title = listItems[i].getElementsByTagName("span")[0].innerHTML;
+                        // 在存储里找到该位置
+                        var obj = $.U.findObjectBy("title", allQns ,title);
+                        console.log(obj.position[0], i)
+                        deleteQn(obj.position[0], i);
+                    }
+                })(i);  
+            }
+            btnEvent();
+            delAndAdd();
+        });
+        $.U.click(addBtn, function() {
+            var newB = new NewBuild.newBuild();
+        });
+        $.U.click(chooseAll, function() {
+            if (chooseAll.checked === true) {
+                for (var i = 0, len = choose.length; i < len - 1; i++) {
+                    choose[i].checked = true;
+                }
+            } else {
+                for (var i = 0, len = choose.length; i < len - 1; i++) {
+                    choose[i].checked = false;
+                }
+            }
+        });
     }
 
     // 返回函数，用于渲染页面

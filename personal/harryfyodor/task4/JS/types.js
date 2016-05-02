@@ -46,7 +46,7 @@ define([
         var inStorage = Storage.getData()[type];
         console.log(inStorage);
         for (var i = 1; i <= inStorage.length + 1; i++) {
-            if(!$.U.findObjectById(inStorage, i)) {
+            if($.U.findObjectBy("id", inStorage, i) !== []) {
                 return i;
             }
         }
