@@ -30,6 +30,7 @@ define([
 			   +	'<button>编辑</button>'
 			   +    '<button>删除</button>'
 			   +	'<button>查看问卷</button>'
+               +	'<button>查看数据</button>'
 			   + '</div>';
                ihtml += aQn;
         }
@@ -70,12 +71,15 @@ define([
                 var btn1 = listItems[i].getElementsByTagName("button")[0];
                 var btn2 = listItems[i].getElementsByTagName("button")[1];
                 var btn3 = listItems[i].getElementsByTagName("button")[2];
+                var btn4 = listItems[i].getElementsByTagName("button")[3];
                 var title = listItems[i].getElementsByTagName("span")[0].innerHTML;
                 // 在存储里找到该位置
                 var obj = $.U.findObjectBy("title", allQns ,title);
                 // 编辑按钮
                 $.U.click(btn1, function() {
-                    var newEdit = new Edit.edit(obj.position[0]);
+                    window.location.hash = "#edit";
+                    $.U.pos = obj.position[0];
+                    var newEdit = new Edit.edit();
                 });
                 // 删除按钮
                 $.U.click(btn2, function() {
@@ -90,7 +94,32 @@ define([
                 });
                 // 查看问卷
                 $.U.click(btn3, function() {
-                    
+                    var popWatch = window.open("QN/index.html");
+                    var setTime;
+                    window.addEventListener("message", function(e) {
+                        console.log(e.data)
+                        if (e.origin === "http://127.0.0.1:3000") {
+                            switch(e.data) {
+                                case 'ready':
+                                    // e.source 为发送的 window 对象
+                                    // 这个win是不是本地的window，是那边的！
+                                    //setTime = setTimeout(function(win) {
+                                        e.source.postMessage(obj.position[0],'http://127.0.0.1:3000');    
+                                    //}, 1, e.source);
+                                    break;
+                                case 'closed':
+                                    clearTimeout(setTime);
+                                    location.reload();
+                                    break;
+                            }
+                        }
+                    });
+                });
+                // 查看数据结果
+                $.U.click(btn4, function() {
+                    window.location.hash = "#result";
+                    $.U.pos = obj.position[0];
+                    var newResult = new Result.result();
                 });
             })(i);
         }
@@ -167,6 +196,7 @@ define([
             delAndAdd();
         });
         $.U.click(addBtn, function() {
+            window.location.hash = "#newbuild";
             var newB = new NewBuild.newBuild();
         });
         $.U.click(chooseAll, function() {

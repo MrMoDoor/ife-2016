@@ -172,13 +172,16 @@ header {
             left: 780px - 20px;
         }
         & button:nth-child(5){
-            right: 192px;
+            right: 192px + 45px;
         }
         & button:nth-child(6){
-            right: 117px;
+            right: 117px + 45px;
         }
         & button:nth-child(7){
-            right: 42px;
+            right: 42px + 45px;
+        }
+        & button:nth-child(8){
+            right: 12px;
         }
     }
 }
@@ -362,12 +365,16 @@ header {
         cursor: pointer;
     }
     input {
+        background-color: $light-gray;
         position: absolute;
-        height: 30px;
-        width: 150px;
-        top: 30px;
-        left: 480-75px;
+        height: 50px;
+        width: 960px;
+        top: 20px;
+       // left: 480-75px;
+        left: 20px;
         border: none;
+        text-align: center;
+        line-height: 3;
     }
     position: relative;
     border-bottom: 2px solid #CCCCCC;

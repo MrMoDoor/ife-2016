@@ -131,11 +131,13 @@ header {
     #list-page-body > div span:nth-child(5) {
       left: 760px; }
     #list-page-body > div button:nth-child(5) {
-      right: 192px; }
+      right: 237px; }
     #list-page-body > div button:nth-child(6) {
-      right: 117px; }
+      right: 162px; }
     #list-page-body > div button:nth-child(7) {
-      right: 42px; }
+      right: 87px; }
+    #list-page-body > div button:nth-child(8) {
+      right: 12px; }
 
 #list-page-foot {
   background-color: white;
@@ -284,12 +286,15 @@ header {
     background-color: #FCF0E5;
     cursor: pointer; }
   #new-build-qn-head input {
+    background-color: #EFEFEF;
     position: absolute;
-    height: 30px;
-    width: 150px;
-    top: 30px;
-    left: 405px;
-    border: none; }
+    height: 50px;
+    width: 960px;
+    top: 20px;
+    left: 20px;
+    border: none;
+    text-align: center;
+    line-height: 3; }
 
 #new-build-btns {
   width: 960px;

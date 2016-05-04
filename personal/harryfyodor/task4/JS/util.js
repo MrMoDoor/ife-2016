@@ -264,6 +264,21 @@ function unique(arr) {
 	return arr;
 }
 
+function returnToListPage() {
+    var header = document.getElementsByTagName("header")[0];
+    var logo1 = header.getElementsByTagName("h3")[0];
+    var logo2 = header.getElementsByTagName("h4")[0];
+    
+	addEvent(logo1, "click", function() {
+		window.location.hash = "#listpage";
+        location.reload();
+    });
+        
+    addEvent(logo2, "click", function() {
+		window.location.hash = "#listpage";
+        location.reload();
+    });
+}
 
 // 简化的常用方法
 $.on = addEvent;
@@ -276,6 +291,11 @@ $.EventUtil = EventUtil;
 $.cloneObject = cloneObject;
 $.findObjectBy = findObjectBy;
 $.unique = unique;
+$.returnToListPage = returnToListPage;
+
+// 这个pos用于存放一个编号，记录listPage按下的那个元素在“数据库”中的位置。绕路为了浏览器前后逻辑。
+var pos;
+$.pos = pos;
 
 return {
     U : $      

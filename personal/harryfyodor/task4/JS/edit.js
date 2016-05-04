@@ -7,9 +7,12 @@ define([
     'types'
 ], function($, Darken, Calendar, ListPage, Storage, T) {
     'use strict';
-    var edit = function(objPos) {
+    
+    var edit = function() {
         // 对外接口
+        var objPos = $.U.pos;
         var newE = new Edit(objPos);
+        $.U.returnToListPage();
     };
     
     var Edit = function(objPos) {
@@ -52,7 +55,7 @@ define([
             ihtml = 
             '<div id="new-build-qn">'
 		    +	'<div id="new-build-qn-head">'
-		    +		'<h3>这里是标题</h3>'
+		    +		'<h3>' + this.eQn.title + '</h3>'
 		    +	'</div>'
 		    +	'<div id="new-build-content">'
 		    +   eCon		
@@ -90,18 +93,26 @@ define([
             
             var allQuestions = [];
             // 三个循环把要放进去的问题放进去
-            for(var i = 0, len = this.eQn.textarea.length; i < len; i++) {
-                allQuestions.push($.U.findObjectBy("id", Storage.getData().textarea, this.eQn.textarea[i]).objectIneed[0]);
+            if (this.eQn.textarea !== [])
+            {
+                for(var i = 0, len = this.eQn.textarea.length; i < len; i++) {
+                    allQuestions.push($.U.findObjectBy("id", Storage.getData().textarea, this.eQn.textarea[i]).objectIneed[0]);
+                }
             }
             
-            for(var j = 0, len2 = this.eQn.checkbox.length; j < len2; j++) {
-                allQuestions.push($.U.findObjectBy("id", Storage.getData().checkbox, this.eQn.checkbox[j]).objectIneed[0]);
+            if (this.eQn.checkbox !== [])
+            {
+                for(var j = 0, len2 = this.eQn.checkbox.length; j < len2; j++) {
+                    allQuestions.push($.U.findObjectBy("id", Storage.getData().checkbox, this.eQn.checkbox[j]).objectIneed[0]);
+                }
             }
             
-            for(var k = 0, len3 = this.eQn.radio.length; k < len3; k++) {
-                allQuestions.push($.U.findObjectBy("id", Storage.getData().radio, this.eQn.radio[k]).objectIneed[0]);
+            if (this.eQn.radio !== [])
+            {
+                for(var k = 0, len3 = this.eQn.radio.length; k < len3; k++) {
+                    allQuestions.push($.U.findObjectBy("id", Storage.getData().radio, this.eQn.radio[k]).objectIneed[0]);
+                }
             }
-            
             this.allQuestions = allQuestions;
         },
         
@@ -177,6 +188,8 @@ define([
             var that = this;
             for (var i = 0, len = qus.length; i < len; i++) {
                 (function(i) {
+                    var nece = qus[i].getElementsByTagName("label")[0].getElementsByTagName("input")[0];
+                    that.necessaryFun(nece, i);
                     var as = qus[i].getElementsByTagName("a");
                     // 三四
                     that.copy(as[as.length - 2], i);
@@ -259,6 +272,18 @@ define([
             });  
         },
         
+        // 是否必要按钮
+        necessaryFun: function(i, pos) {
+            var that = this;
+            $.U.click(i, function() {
+                if (i.checked === true) {
+                    that.allQuestions[pos].necessary = true;
+                } else {
+                    that.allQuestions[pos].necessary = false;
+                }
+            });
+        },
+        
         // 删除按钮
         del: function(a, pos){
             var that = this;
@@ -278,11 +303,12 @@ define([
         
         // 新建按钮，保存按钮，发布按钮，标题
         editEvent: function() {
+            var newBuildHead = document.getElementById("new-build-qn-head");
+            var h3 = newBuildHead.getElementsByTagName("h3")[0];
             var newBuildBtn = document.getElementById("new-build-btns");
             var btn0 = newBuildBtn.getElementsByTagName("div")[1].getElementsByTagName("button")[0];
             var newBuildFoot = document.getElementById("new-build-qn-foot");
             var btns = newBuildFoot.getElementsByTagName("button");
-            console.log(btns)
             var that = this;
             // 按新建时候的动画效果以及dom操作
             $.U.click(newBuildBtn, function() {
@@ -320,6 +346,31 @@ define([
                         that.status = "发布中";
                     }
                 });
+            });
+            console.log("hi")
+            $.U.click(h3, function() {
+                newBuildHead.innerHTML += '<input type="text">';
+                var inputHead = document.getElementById("new-build-qn-head").getElementsByTagName("input")[0];
+                // 自动对焦
+                inputHead.focus();
+                $.U.EventUtil.addHandler(inputHead, "blur", function () {
+                    var newH = inputHead.value;
+                    var re = /^[\u4E00-\u9FA5A-Za-z0-9]+$/;
+                    console.log(re.test(re));
+                    if ($.U.findObjectBy("title", that.allQns, newH) !== [] && re.test(newH)) {
+                        that.eQn.title = newH;
+                        console.log(that.eQn.title)
+                        // dom上重新渲染标题
+                        h3.innerHTML = newH; 
+                    } else {
+                        alert("标题只允许是汉字，数字，以及英文字母");
+                    }
+                    // 移除输入框
+                    inputHead.parentNode.removeChild(inputHead);
+                    that.refresh(); // 刷新页面
+                });
+                
+                
             });
         },
         
@@ -482,7 +533,6 @@ define([
                 checkbox: data.checkbox,
                 radio: data.radio
             })
-            
         }
     };
     

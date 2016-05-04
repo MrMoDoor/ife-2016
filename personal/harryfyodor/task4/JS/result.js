@@ -1,9 +1,9 @@
-define([
+require([
     'util',
     'darken',
     'listPage',
     'storage'
-], function(Util, Darken, ListPage, Storage) {
+], function($, Darken, ListPage, Storage) {
     'use strict';
     
 });
